@@ -12,13 +12,13 @@ import Preloader from '../Preloader/Preloader.js';
 import SavedNews from '../SavedNews/SavedNews.js';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.js';
 import SearchForm from '../SearchForm/SearchForm.js';
-
-import './App.css'; */
+ */
+import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
 
-  function handleLogoClick() {
+  function handleOnClick() {
     if (loggedIn) {
       localStorage.removeItem('jwt');
       /* setCurrentUser(userContext); */
@@ -29,8 +29,8 @@ function App() {
   return (
     <div className="App">
       <Header
-        onLogoClick={handleLogoClick}
         loggedIn={loggedIn}
+        onClick={handleOnClick}
       />
     </div>
   );

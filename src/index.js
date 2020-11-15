@@ -4,6 +4,8 @@ import { BrowserRouter } from 'react-router-dom';
 import App from './components/App/App';
 import './index.css';
 
+import './pixelglass/script';
+
 ReactDOM.render(
   <BrowserRouter>
     <App />
