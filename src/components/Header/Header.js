@@ -40,6 +40,14 @@ function Header({ loggedIn, onClick }) {
         <h1 className="header__title">Что творится в мире?</h1>
         <p className="header__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
         <div className="header__search"></div>
+
+        <form action="POST" id="header__search-form" className="header__search-form">
+          <span className="header__search-form-mail">
+            <input type="text" placeholder="Email" className="header__search-form-mail-input"/>
+            <input type="submit" value="Искать" className="header__search-submit"/>
+          </span>
+        </form>
+
       </div>
     </header>
   );

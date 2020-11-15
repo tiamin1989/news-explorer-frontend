@@ -1,5 +1,6 @@
 import React, { useState /* useEffect */ } from 'react';
 import { /* Route, Switch, */ withRouter /* Redirect, useHistory */ } from 'react-router-dom';
+import Footer from '../Footer/Footer';
 /* import About from '../About/About.js';
 import Footer from '../Footer/Footer.js'; */
 import Header from '../Header/Header';
@@ -31,6 +32,8 @@ function App() {
       <Header
         loggedIn={loggedIn}
         onClick={handleOnClick}
+      />
+      <Footer
       />
     </div>
   );
