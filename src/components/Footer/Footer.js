@@ -17,17 +17,19 @@ function Footer(/* { loggedIn, onClick } */) {
 
   return (
     <footer className="footer">
-      <img src={aboutPhoto} alt="Это я" className="footer__about-photo" />
-      <div className="footer__about-wrapper">
-        <h2 className="footer__title">Об авторе</h2>
-        <p className="footer_description">
-          Это блок с описанием автора проекта. Здесь следует указать, как вас зовут,
-          чем вы занимаетесь, какими технологиями разработки владеете.
+      <div className="footer__about">
+        <img src={aboutPhoto} alt="Это я" className="footer__about-photo" />
+        <div className="footer__about-wrapper">
+          <h2 className="footer__title">Об авторе</h2>
+          <p className="footer_description">
+            Это блок с описанием автора проекта. Здесь следует указать, как вас зовут,
+            чем вы занимаетесь, какими технологиями разработки владеете.
+          </p>
+          <p className="footer_description">
+            Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и
+            чем можете помочь потенциальным заказчикам.
         </p>
-        <p className="footer_description">
-          Также можно рассказать о процессе обучения в Практикуме, чему вы тут научились, и
-          чем можете помочь потенциальным заказчикам.
-        </p>
+        </div>
       </div>
     </footer>
   );

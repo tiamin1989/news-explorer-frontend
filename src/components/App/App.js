@@ -28,14 +28,14 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <>
       <Header
         loggedIn={loggedIn}
         onClick={handleOnClick}
       />
       <Footer
       />
-    </div>
+    </>
   );
 }
 

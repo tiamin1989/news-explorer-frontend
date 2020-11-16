@@ -43,7 +43,7 @@ function Header({ loggedIn, onClick }) {
 
         <form action="POST" id="header__search-form" className="header__search-form">
           <span className="header__search-form-mail">
-            <input type="text" placeholder="Email" className="header__search-form-mail-input"/>
+            <input type="text" placeholder="Введите тему новости" className="header__search-form-mail-input"/>
             <input type="submit" value="Искать" className="header__search-submit"/>
           </span>
         </form>

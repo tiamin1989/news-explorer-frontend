@@ -1,3 +1,5 @@
+/*eslint-disable*/
+
 function pixelGlass() {
 
   'use strict';
