@@ -9,7 +9,7 @@ function Navigation({ loggedIn, onClick }) {
   const location = useLocation();
   const history = useHistory();
 
-  function goToAuthorization() {
+  function goTo() {
     onClick();
     history.push('./sign-up');
   }
@@ -21,13 +21,16 @@ function Navigation({ loggedIn, onClick }) {
           <Link to="/" className="header__nav-item-link">Главная</Link>
         </li>
         {loggedIn
-          ? (<li className={`header__nav-item ${location.pathname === '/saved-news' ? 'header__nav-item_current' : ''}`}>
-            <Link to="/saved-news" className="header__nav-item-link">Сохраненные статьи</Link>
-          </li>)(<li className={`header__nav-item ${location.pathname === '/me' ? 'header__nav-item_current' : ''}`}>
-            <Link to="/me" className="header__nav-item-link">{/* {currentUser.name} */}</Link>
-          </li>)
+          ? (<>
+            <li className={`header__nav-item ${location.pathname === '/saved-news' ? 'header__nav-item_current' : ''}`}>
+              <Link to="/saved-news" className="header__nav-item-link">Сохраненные статьи</Link>
+            </li>
+            <li className="header__nav-button">
+              <Link to="/me" className="header__nav-item-button header__nav-item-button_auth">Грета</Link>
+            </li>
+          </>)
           : (<li className="header__nav-button">
-            <button className="header__nav-item-button" onClick={goToAuthorization}>Авторизоваться</button>
+            <button className="header__nav-item-button" onClick={goTo}>Авторизоваться</button>
           </li>)
         }
       </ul>

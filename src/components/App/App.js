@@ -15,7 +15,7 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.js';
 import './App.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const img = '../../images/card-def-image.png';
   function handleOnClick() {
     if (loggedIn) {

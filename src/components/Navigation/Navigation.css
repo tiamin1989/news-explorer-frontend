@@ -36,9 +36,13 @@
 }
 
 .header__nav-item_current {
-  margin: 19px 0 0;
-  padding: 0px 0 24px;
+  margin: 19px 0 0 0;
+  padding: 0px 0 25px;
   border-bottom: 3px solid #fff;
+}
+
+.header__nav-item_current:not(:first-child) {
+  margin: 19px 0 0 32px;
 }
 
 @media all and (max-width: 1439px) {
@@ -101,6 +105,17 @@
   cursor: pointer;
   background: transparent;
   transition: color .2s;
+}
+
+.header__nav-item-button_auth {
+  padding: 10px 31px 10px 22px;
+  background: url('../../images/auth.svg') no-repeat;
+  background-position: 100%;
+  transition: opacity .2s;
+}
+
+.header__nav-item-button_auth:hover {
+  opacity: .8;
 }
 
 @media all and (max-width: 1439px) {
