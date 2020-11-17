@@ -1,9 +1,8 @@
 import React, { useState /* useEffect */ } from 'react';
 import { /* Route, Switch, */ withRouter /* Redirect, useHistory */ } from 'react-router-dom';
-import Footer from '../Footer/Footer';
-/* import About from '../About/About.js';
-import Footer from '../Footer/Footer.js'; */
 import Header from '../Header/Header';
+import About from '../About/About';
+import Footer from '../Footer/Footer';
 /* import Main from '../Main/Main.js';
 import Navigation from '../Navigation/Navigation.js';
 import NewsCard from '../NewsCard/NewsCard.js';
@@ -33,8 +32,8 @@ function App() {
         loggedIn={loggedIn}
         onClick={handleOnClick}
       />
-      <Footer
-      />
+      <About />
+      <Footer />
     </>
   );
 }
