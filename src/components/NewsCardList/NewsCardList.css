@@ -1,0 +1,39 @@
+.card-list {
+  display: flex;
+  flex-direction: column;
+  background: #F5F6F7;
+}
+
+.card-list__title {
+  padding: 82px 94px 0;
+  margin: 0;
+  font-family: Roboto Slab;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.card-list__news-cards {
+  display: flex;
+  padding: 0 84px 0;
+}
+
+.card-list__more {
+  margin: 47px auto 82px;
+  border: 0;
+  width: 288px;
+  height: 64px;
+  background: #FFFFFF;
+  border-radius: 80px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #1A1B22;
+  cursor: pointer;
+}
+
+
