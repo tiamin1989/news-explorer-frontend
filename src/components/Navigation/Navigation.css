@@ -140,3 +140,33 @@
     padding: 12px 0px 10px;
   }
 }
+
+.header__nav-mobile-item-button {
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  background: transparent;
+  color: #fff;
+  margin: 22px 0 25px;
+  padding: 14px 21px 13px;
+  width: 100%;
+  border: 1px solid #fff;
+  border-radius: 35px;
+  cursor: pointer;
+}
+
+.header__nav-mobile-item-button:hover {
+  filter: opacity(.8);
+}
+
+.header__nav-mobile-item-button:focus {
+  filter: opacity(.8);
+  outline: none;
+}
+
+.header__nav-mobile-item-link:focus {
+  filter: opacity(.8);
+}

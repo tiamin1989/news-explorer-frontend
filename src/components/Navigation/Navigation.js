@@ -38,8 +38,11 @@ function Navigation({ loggedIn, unSmallDesktop }) {
             </li>
             {loggedIn
               ? (<>
-                <li className="header__nav-item-mobile">
+                <li className="header__nav-mobile-item">
                   <Link to="/saved-news" className="header__nav-mobile-item-link">Сохраненные статьи</Link>
+                </li>
+                <li className="header__nav-mobile-item">
+                  <button className="header__nav-mobile-item-button">Авторизоваться</button>
                 </li>
               </>)
               : ''

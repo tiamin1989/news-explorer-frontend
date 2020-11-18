@@ -8,10 +8,8 @@ import Preloader from '../Preloader/Preloader'; */
 /* import Main from '../Main/Main.js';
 import Navigation from '../Navigation/Navigation.js';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
-
 import SavedNews from '../SavedNews/SavedNews.js';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.js';
-
  */
 import './App.css';
 
@@ -31,7 +29,11 @@ function App() {
 
   function handleHamburgerClick() {
     handleOnClick();
-    setIsHamburgerActive(!isHamburgerActive);
+    setIsHamburgerActive(true);
+  }
+
+  function handleCloseClick() {
+    setIsHamburgerActive(false);
   }
 
   React.useEffect(() => {
@@ -44,10 +46,11 @@ function App() {
         loggedIn={loggedIn}
         onHamburgerClick={handleHamburgerClick}
         isHamburgerActive={isHamburgerActive}
+        onCloseClick={handleCloseClick}
       />
-            <About />
-            <Footer />
-     {/*  <Preloader />
+      <About />
+      <Footer />
+      {/*  <Preloader />
       <NewsCardList
         img={img}
       /> */}

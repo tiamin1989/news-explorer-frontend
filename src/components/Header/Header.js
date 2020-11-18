@@ -8,7 +8,7 @@ import hamburgerClose from '../../images/close.svg';
 
 import './Header.css';
 
-function Header({ loggedIn, onHamburgerClick, isHamburgerActive }) {
+function Header({ loggedIn, onHamburgerClick, isHamburgerActive, onCloseClick }) {
   const location = useLocation();
   const history = useHistory();
 
@@ -24,7 +24,7 @@ function Header({ loggedIn, onHamburgerClick, isHamburgerActive }) {
           <div className="header__hamburger-menu">
             <div className="header__hamburger-menu-wrapper">
               <span className="header__hamburger-logo">NewsExplorer</span>
-              <img src={hamburgerClose} alt="Закрыть" className="header__close" />
+              <img src={hamburgerClose} alt="Закрыть" className="header__close" onClick={onCloseClick} />
             </div>
             <div className="header__hamburger-line"/>
             {/* on small desktops */}
