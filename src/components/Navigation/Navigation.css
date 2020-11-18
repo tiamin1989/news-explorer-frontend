@@ -7,7 +7,7 @@
   list-style: none;
 }
 
-@media all and (max-width: 539px) {
+@media all and (max-width: 554px) {
   .header__nav {
     display: none;
   }
@@ -45,18 +45,6 @@
     padding: 21px 0px 16px 0px;
   }
 }
-
-/* .header__nav-item_current:not(:first-child) {
-  margin: 21px 0 0 32px;
-} */
-
-
-
-/* @media all and (max-width: 768px) {
-  .header__nav-item_current {
-    padding: 0px 0 19px;
-  }
-} */
 
 .header__nav_button {
   padding: 11px 17px 11px 17px;

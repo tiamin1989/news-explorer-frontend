@@ -13,7 +13,14 @@
 
 @media all and (max-width: 768px) {
   .about {
-    padding: 5vw 31px 95px;
+    padding: 5vw 31px 63px;
+  }
+}
+
+@media all and (max-width: 671px) {
+  .about {
+    flex-direction: column;
+    padding: 5vw 16px 63px;
   }
 }
 
@@ -35,6 +42,14 @@
     margin: 24px 0 0;
     width: 30.1vw;
     height: 30.1vw;
+  }
+}
+
+@media all and (max-width: 671px) {
+  .about__photo {
+    margin: 0 auto 0;
+    width: 272px;
+    height: 272px;
   }
 }
 
@@ -62,6 +77,12 @@
   .about__wrapper {
     padding: 0 0 0 33px;
     line-height: 24px;
+  }
+}
+
+@media all and (max-width: 671px) {
+  .about__wrapper {
+    padding: 0;
   }
 }
 
