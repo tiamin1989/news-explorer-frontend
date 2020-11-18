@@ -3,12 +3,12 @@ import { /* Route, Switch, */ withRouter /* Redirect, useHistory */ } from 'reac
 import Header from '../Header/Header';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
-/* import NewsCard from '../NewsCard/NewsCard.js'; */
-import NewsCardList from '../NewsCardList/NewsCardList';
+/* import NewsCardList from '../NewsCardList/NewsCardList'; */
+import Preloader from '../Preloader/Preloader';
 /* import Main from '../Main/Main.js';
 import Navigation from '../Navigation/Navigation.js';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
-import Preloader from '../Preloader/Preloader.js';
+
 import SavedNews from '../SavedNews/SavedNews.js';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.js';
  */
@@ -16,7 +16,9 @@ import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const img = '../../images/card-def-image.png';
+
+  /* const img = '../../images/card-def-image.png'; */
+
   function handleOnClick() {
     if (loggedIn) {
       localStorage.removeItem('jwt');
@@ -31,9 +33,10 @@ function App() {
         loggedIn={loggedIn}
         onClick={handleOnClick}
       />
-      <NewsCardList
+      <Preloader />
+      {/* <NewsCardList
         img={img}
-      />
+      /> */}
       <About />
       <Footer />
     </>

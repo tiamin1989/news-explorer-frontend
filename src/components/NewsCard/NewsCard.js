@@ -3,11 +3,11 @@ import './NewsCard.css';
 import PropTypes from 'prop-types';
 import img from '../../images/card-def-image.png';
 
-function NewsCard(/* { img } */) {
+function NewsCard() {
   return (
     <li className="card-list__news-card">
       <img src={img} className="card-list__card-image" />
-      <span className="card-list__card-added card-list__card-added_true">{/* added */}</span>
+      <span className="card-list__card-added card-list__card-added_true"></span>
       <div className="card-list__wrapper">
         <span className="card-list__card-date">2 августа, 2019</span>
         <h2 className="card-list__card-title">Национальное достояние – парки</h2>

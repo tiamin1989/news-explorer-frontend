@@ -1,6 +1,7 @@
 @import url('./vendor/normalize.css');
 @import url('./fonts/roboto.css');
 @import url('./fonts/roboto-slab.css');
+@import url('./fonts/source-sans-pro.css');
 
 /* Pixel Glass */
 @import url('./pixelglass/styles.css');

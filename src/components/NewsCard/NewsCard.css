@@ -22,7 +22,7 @@
 }
 
 .card-list__card-date {
-  font-family: Source Sans Pro;
+  font-family: 'Source Sans Pro', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -33,7 +33,7 @@
 }
 
 .card-list__card-title {
-  font-family: Roboto Slab;
+  font-family: 'Roboto Slab', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
@@ -44,7 +44,7 @@
 }
 
 .card-list__card-text {
-  font-family: Roboto;
+  font-family: 'Roboto', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
@@ -55,7 +55,7 @@
 }
 
 .card-list__card-source {
-  font-family: Roboto Slab;
+  font-family: 'Roboto Slab', Tahoma, sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
