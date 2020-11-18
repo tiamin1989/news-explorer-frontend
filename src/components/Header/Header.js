@@ -8,9 +8,16 @@ import hamburgerClose from '../../images/close.svg';
 
 import './Header.css';
 
-function Header({ loggedIn, onHamburgerClick, isHamburgerActive, onCloseClick }) {
+function Header({
+  loggedIn,
+  onHamburgerClick,
+  isHamburgerActive,
+  onCloseClick,
+}) {
   const location = useLocation();
   const history = useHistory();
+
+  console.log('isHamburgerActive', isHamburgerActive);
 
   function goTo(to) {
     history.push(to);
@@ -26,15 +33,13 @@ function Header({ loggedIn, onHamburgerClick, isHamburgerActive, onCloseClick })
               <span className="header__hamburger-logo">NewsExplorer</span>
               <img src={hamburgerClose} alt="Закрыть" className="header__close" onClick={onCloseClick} />
             </div>
-            <div className="header__hamburger-line"/>
-            {/* on small desktops */}
+            <div className="header__hamburger-line" />
             <Navigation
               loggedIn={loggedIn}
               unSmallDesktop={false}
             />
           </div>
         </div>
-        {/* on unSmall desktops */}
         <Navigation
           loggedIn={loggedIn}
           unSmallDesktop={true}
@@ -51,6 +56,7 @@ Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   onHamburgerClick: PropTypes.func.isRequired,
   isHamburgerActive: PropTypes.bool.isRequired,
+  onCloseClick: PropTypes.func.isRequired,
 };
 
 export default Header;

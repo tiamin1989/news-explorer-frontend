@@ -38,7 +38,7 @@ function App() {
 
   React.useEffect(() => {
     console.log('привет');
-  }, [isHamburgerActive]);
+  }, []);
 
   return (
     <>

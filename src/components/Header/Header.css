@@ -151,22 +151,3 @@
   background: rgba(196, 196, 196, 0.01);
   box-shadow: inset 0px -1px 0px rgba(255, 255, 255, 0.2);
 }
-
-.header__nav-mobile {
-  margin: 0;
-  padding: 20px 8px 0;
-  list-style: none;
-  display: flex;
-  flex-direction: column;
-  font-family: Roboto;
-  font-style: normal;
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 56px;
-  background: #000;
-}
-
-.header__nav-mobile-item-link {
-  color: #FFFFFF;
-  text-decoration: none;
-}

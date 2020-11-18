@@ -170,3 +170,27 @@
 .header__nav-mobile-item-link:focus {
   filter: opacity(.8);
 }
+
+.header__nav-mobile {
+  margin: 0;
+  padding: 20px 8px 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 56px;
+  background: #000;
+  border-radius: 0 0 16px 16px;
+}
+
+.header__nav-mobile-item-link {
+  color: #FFFFFF;
+  text-decoration: none;
+}
+
+.header__nav-mobile-item:last-child {
+  padding: 0px 0px 10px;
+}
