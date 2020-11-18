@@ -10,18 +10,18 @@ import './Header.css';
 
 function Header({
   loggedIn,
-  onHamburgerClick,
-  isHamburgerActive,
-  onCloseClick,
 }) {
   const location = useLocation();
   const history = useHistory();
-
-  console.log('isHamburgerActive', isHamburgerActive);
+  const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
   function goTo(to) {
     history.push(to);
   }
+
+  const toggleHamburger = () => {
+    setIsHamburgerActive(!isHamburgerActive);
+  };
 
   return (
     <header className="header">
@@ -31,7 +31,7 @@ function Header({
           <div className="header__hamburger-menu">
             <div className="header__hamburger-menu-wrapper">
               <span className="header__hamburger-logo">NewsExplorer</span>
-              <img src={hamburgerClose} alt="Закрыть" className="header__close" onClick={onCloseClick} />
+              <img src={hamburgerClose} alt="Закрыть" className="header__close" onClick={toggleHamburger} />
             </div>
             <div className="header__hamburger-line" />
             <Navigation
@@ -44,7 +44,7 @@ function Header({
           loggedIn={loggedIn}
           unSmallDesktop={true}
         />
-        <img src={hamburger} alt="Открыть" className="header__hamburger-img" onClick={onHamburgerClick} />
+        <img src={hamburger} alt="Открыть" className="header__hamburger-img" onClick={toggleHamburger} />
       </div>
       <div className="header__line"></div>
       {location.pathname === '/' ? <SearchForm /> : ''}
@@ -54,9 +54,6 @@ function Header({
 
 Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  onHamburgerClick: PropTypes.func.isRequired,
-  isHamburgerActive: PropTypes.bool.isRequired,
-  onCloseClick: PropTypes.func.isRequired,
 };
 
 export default Header;

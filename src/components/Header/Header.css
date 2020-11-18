@@ -73,19 +73,18 @@
 
 
 .header__hamburger {
-/*   display: flex;
+  display: none;
   justify-content: space-between;
   height: 57px;
   position: absolute;
   top: 0;
   left: 0;
   background: #000;
-  width: 100%; */
+  width: 100%;
 }
 
-.header__hamburger_acive {
-  display: block;
-  z-index: 1;
+.header__hamburger_active {
+  display: flex;
 }
 
 .header__hamburger-logo {
