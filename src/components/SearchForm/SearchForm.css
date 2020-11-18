@@ -9,7 +9,7 @@
 
 @media all and (min-width: 1440px) {
   .search {
-    padding: 74px 416px 0;
+    padding: 74px 407px 0;
   }
 }
 
@@ -19,9 +19,9 @@
   }
 }
 
-@media all and (max-width: 1104px) {
+@media all and (max-width: 768px) {
   .search {
-    padding: 4.7vw 19.9vw 0;
+    padding: 4.7vw 20vw 0;
   }
 }
 
@@ -39,7 +39,7 @@
 
 .search__title {
   margin: 0;
-  padding: 3px 0 0;
+  padding: 5px 0px 0px 0px;
   font-family: 'Roboto Slab', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -72,7 +72,7 @@
 
 .search__subtitle {
   margin: 0;
-  padding: 34px 0 0;
+  padding: 33px 0 0;
   font-family: 'Roboto', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -88,14 +88,14 @@
 }
 
 .search__form {
-  padding: 66px 0 82px;
+  padding: 65px 0 82px;
   min-width: 268px;
   height: 61px;
 }
 
 @media all and (min-width: 1440px) {
   .search__form {
-    padding: 66px 0 82px;
+    padding: 65px 0 82px;
   }
 }
 
@@ -113,7 +113,7 @@
 
 @media all and (max-width: 320px) {
   .search__form {
-    margin: 103px 0 0;
+    margin: 103px 0 62px;
   }
 }
 
@@ -159,12 +159,17 @@
 
 @media all and (max-width: 320px) {
   .search__form-mail-input {
-    padding: 0;
+    padding: 0px 0px 0px 15px;
     height: 52px;
     border-radius: 27px;
   }
+}
+
+@media all and (max-width: 320px) {
   .search__form-mail-input::placeholder {
     margin-left: 15px;
+
+    color: #B6BCBF;
   }
 }
 

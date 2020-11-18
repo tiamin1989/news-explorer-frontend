@@ -1,13 +1,8 @@
 .about {
   min-height: 29vw;
   display: flex;
-  padding: 80px 0px 95px 95px;
-}
-
-@media all and (min-width: 1440px) {
-  .about {
-    padding: 80px 0px 95px 6.6vw;
-  }
+  padding: 80px 55px 96px 0px;
+  justify-content: center;
 }
 
 @media all and (max-width: 1439px) {
@@ -37,6 +32,7 @@
 
 @media all and (max-width: 768px) {
   .about__photo {
+    margin: 24px 0 0;
     width: 30.1vw;
     height: 30.1vw;
   }
@@ -49,16 +45,12 @@
 }
 
 .about__wrapper {
+  max-width: 600px;
   display: flex;
   flex-direction: column;
-  padding: 19px 200px 0px 57px;
+  padding: 0px 56px 0px;
 }
 
-@media all and (min-width: 1440px) {
-  .about__wrapper {
-    padding: 19px 200px 0px 57px;
-  }
-}
 
 @media all and (max-width: 1439px) {
   .about__wrapper {
@@ -74,7 +66,7 @@
 }
 
 .about__title {
-  margin: 33px 0 0;
+  margin: 52px 0 0;
   font-family: 'Roboto Slab', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
@@ -120,6 +112,6 @@
 
 @media all and (max-width: 768px) {
   .about__paragraph {
-    margin: 10px 0px 5px 0;
+    margin: 7px 0px 17px 0;
   }
 }

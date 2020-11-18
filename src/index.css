@@ -7,16 +7,11 @@
 @import url('./pixelglass/styles.css');
 /* /Pixel Glass */
 
-body {
+#root {
   margin: 0 auto 0;
   max-width: 1466px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }
 
 /* Pixel Glass */

@@ -7,10 +7,10 @@ import './Preloader.css';
 function Preloader() {
   return (
     <section className="loader">
-      {/* <div className="loader__wrapper">
-        <img src={loader} className="loader__circle" />
+      <div className="loader__wrapper">
+        <i className="loader__circle-preloader"></i>
         <h2 className="loader__title">Идет поиск новостей...</h2>
-      </div> */}
+      </div>
       <div className="loader__not-found">
         <img src={notFound} className="loader__not-found-image" />
         <h2 className="loader__title loader__title_not-found">Ничего не найдено</h2>
