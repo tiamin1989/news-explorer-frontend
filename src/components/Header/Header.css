@@ -27,9 +27,9 @@
   }
 }
 
-@media all and (max-width: 554px) {
+@media all and (max-width: 696px) {
   .header__wrapper {
-    min-height: 67px;
+    padding: 8px 31px 11px;
   }
 }
 
@@ -71,7 +71,6 @@
   }
 }
 
-
 .header__hamburger {
   display: none;
   justify-content: space-between;
@@ -101,6 +100,7 @@
 
 .header__hamburger-img {
   cursor: pointer;
+  display: none;
 }
 
 .header__close {
@@ -112,9 +112,9 @@
   filter: opacity(.5);
 }
 
-@media all and (min-width: 554px) {
+@media all and (max-width: 696px) {
   .header__hamburger-img {
-    display: none;
+    display: block;
   }
 }
 

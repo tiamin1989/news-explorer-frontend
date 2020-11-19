@@ -7,7 +7,7 @@
   list-style: none;
 }
 
-@media all and (max-width: 554px) {
+@media all and (max-width: 696px) {
   .header__nav {
     display: none;
   }
@@ -25,9 +25,16 @@
   text-align: center;
 }
 
+@media all and (max-width: 924px) {
+  .header__nav-item {
+    padding: 18px 0px 23px 0px;
+    font-size: 16px;
+  }
+}
+
 @media all and (max-width: 768px) {
   .header__nav-item {
-    font-size: 16px;
+    padding: 18px 0px 16px 0px;
   }
 }
 
