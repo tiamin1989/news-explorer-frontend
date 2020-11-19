@@ -144,6 +144,12 @@
   justify-content: space-between;
 }
 
+@media all and (max-width: 696px) {
+  .header__hamburger-menu-wrapper {
+    padding: 0 10px 0;
+  }
+}
+
 .header__hamburger-line {
   margin: 10px 0 0;
   height: 2px;

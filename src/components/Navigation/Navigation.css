@@ -193,6 +193,12 @@
   border-radius: 0 0 16px 16px;
 }
 
+@media all and (max-width: 696px) {
+  .header__nav-mobile {
+    padding: 20px 16px 0;
+  }
+}
+
 .header__nav-mobile-item-link {
   color: #FFFFFF;
   text-decoration: none;
