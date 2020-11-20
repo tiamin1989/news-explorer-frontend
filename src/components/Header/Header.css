@@ -11,8 +11,12 @@
   background-position: 50%;
 }
 
+.header_white {
+  background: #fff;
+}
+
 .header__wrapper {
-  background: #3333;
+  /* background: #3333; */
   width: 100%;
   padding: 0.65% 6.71% 0px;
   display: flex;
@@ -53,6 +57,10 @@
   cursor: default;
   transition: color .2s;
   cursor: pointer;
+}
+
+.header__logo_white {
+  color: #1A1B22;
 }
 
 .header__logo:hover {

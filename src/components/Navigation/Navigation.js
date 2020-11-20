@@ -18,15 +18,15 @@ function Navigation({ loggedIn, unSmallDesktop }) {
       <>
         <ul className="header__nav">
           <li className={`header__nav-item ${location.pathname === '/' ? 'header__nav-item_current' : ''}`}>
-            <Link to="/" className="header__nav-item-link">Главная</Link>
+            <Link to="/" className={`header__nav-item-link${location.pathname === '/saved-news' ? ' header__nav-item-link_white' : ''}`}>Главная</Link>
           </li>
           {loggedIn
             ? (<>
-              <li className={`header__nav-item ${location.pathname === '/saved-news' ? 'header__nav-item_current' : ''}`}>
-                <Link to="/saved-news" className="header__nav-item-link">Сохраненные статьи</Link>
+              <li className={`header__nav-item ${location.pathname === '/saved-news' ? 'header__nav-item_current_white' : ''}`}>
+                <Link to="/saved-news" className={`header__nav-item-link${location.pathname === '/saved-news' ? ' header__nav-item-link_white' : ''}`}>Сохраненные статьи</Link>
               </li>
               <li className="header__nav-button">
-                <Link to="/me" className="header__nav-item-button header__nav-item-button_auth">Грета</Link>
+                <Link to="/me" className={`header__nav-item-button header__nav-item-button_auth${location.pathname === '/saved-news' ? ' header__nav-item-button_white header__nav-item-button_auth_white' : ''}`}>Грета</Link>
               </li>
             </>)
             : (<li className="header__nav-button">

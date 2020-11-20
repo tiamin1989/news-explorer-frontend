@@ -24,9 +24,9 @@ function Header({
   };
 
   return (
-    <header className="header">
+    <header className={`header${location.pathname === '/saved-news' ? ' header_white' : ''}`}>
       <div className="header__wrapper">
-        <span className="header__logo" onClick={() => goTo('./')}>NewsExplorer</span>
+        <span className={`header__logo${location.pathname === '/saved-news' ? ' header__logo_white' : ''}`} onClick={() => goTo('./')}>NewsExplorer</span>
         <div className={`header__hamburger${isHamburgerActive ? ' header__hamburger_active' : ''}`}>
           <div className="header__hamburger-menu">
             <div className="header__hamburger-menu-wrapper">
