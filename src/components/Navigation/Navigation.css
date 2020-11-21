@@ -40,7 +40,7 @@
 }
 
 .header__nav-item:not(:first-child) {
-  margin: 0 0 0 19px;
+  margin: 0 0 0 33px;
 }
 
 .header__nav-item_current {

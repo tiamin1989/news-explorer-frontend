@@ -3,7 +3,7 @@ import { /* Route, Switch, */ withRouter /* Redirect, useHistory */ } from 'reac
 import Header from '../Header/Header';
 import About from '../About/About';
 import Footer from '../Footer/Footer';
-/* import NewsCardList from '../NewsCardList/NewsCardList'; */
+import NewsCardList from '../NewsCardList/NewsCardList';
 import Preloader from '../Preloader/Preloader';
 /* import Main from '../Main/Main.js';
 import Navigation from '../Navigation/Navigation.js';
@@ -14,7 +14,7 @@ import SavedNews from '../SavedNews/SavedNews';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import './App.css';
 
-/* const img = '../../images/card-def-image.png'; */
+const img = '../../images/card-def-image.png';
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(true);
@@ -50,9 +50,9 @@ function App() {
         onCloseClick={handleCloseClick}
       />
       <SavedNewsHeader/>
-{/*       <NewsCardList
+      <NewsCardList
         img={img}
-      /> */}
+      />
       <Preloader />
       <About />
       <Footer />
