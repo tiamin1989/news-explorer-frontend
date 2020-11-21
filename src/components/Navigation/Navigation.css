@@ -40,7 +40,7 @@
 }
 
 .header__nav-item:not(:first-child) {
-  margin: 0 0 0 34px;
+  margin: 0 0 0 19px;
 }
 
 .header__nav-item_current {
@@ -137,6 +137,12 @@
   background-position: 85%;
   transition: opacity .2s;
   text-decoration: none;
+}
+
+@media all and (max-width: 768px) {
+  .header__nav-item-button_auth {
+    padding: 8px 44px 11px 13px;
+  }
 }
 
 .header__nav-item-button_auth_white {
