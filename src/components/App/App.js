@@ -8,9 +8,10 @@ import Preloader from '../Preloader/Preloader';
 /* import Main from '../Main/Main.js';
 import Navigation from '../Navigation/Navigation.js';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
-import SavedNews from '../SavedNews/SavedNews.js';
-import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader.js';
+import SavedNews from '../SavedNews/SavedNews';
  */
+
+import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import './App.css';
 
 /* const img = '../../images/card-def-image.png'; */
@@ -48,14 +49,13 @@ function App() {
         isHamburgerActive={isHamburgerActive}
         onCloseClick={handleCloseClick}
       />
+      <SavedNewsHeader/>
+{/*       <NewsCardList
+        img={img}
+      /> */}
       <Preloader />
       <About />
       <Footer />
-
-      {/*
-      <NewsCardList
-        img={img}
-      /> */}
 
     </>
   );

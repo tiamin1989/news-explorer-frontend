@@ -1,11 +1,14 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import NewsCard from '../NewsCard/NewsCard';
 import './NewsCardList.css';
 
 function NewsCardList() {
+  const location = useLocation();
+
   return (
     <section className="card-list">
-      <h2 className="card-list__title">Результаты поиска</h2>
+      {location.pathname === './saved-news' ? (<h2 className="card-list__title">Результаты поиска</h2>) : ''}
       <ul className="card-list__news-cards">
         <NewsCard />
         <NewsCard />

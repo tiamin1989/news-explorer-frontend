@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import SearchForm from '../SearchForm/SearchForm';
 import Navigation from '../Navigation/Navigation';
 import hamburger from '../../images/hamburger.svg';
+import hamburgerWhite from '../../images/hamburger_white.svg';
 import hamburgerClose from '../../images/close.svg';
 
 import './Header.css';
@@ -44,9 +45,9 @@ function Header({
           loggedIn={loggedIn}
           unSmallDesktop={true}
         />
-        <img src={hamburger} alt="Открыть" className="header__hamburger-img" onClick={toggleHamburger} />
+        <img src={location.pathname === '/saved-news' ? hamburgerWhite : hamburger} alt="Открыть" className={`header__hamburger-img${location.pathname === '/saved-news' ? ' header__hamburger-img_white' : ''}`} onClick={toggleHamburger} />
       </div>
-      <div className="header__line"></div>
+      <div className={`header__line${location.pathname === '/saved-news' ? ' header__line_white' : ''}`}></div>
       {location.pathname === '/' ? <SearchForm /> : ''}
     </header>
   );
