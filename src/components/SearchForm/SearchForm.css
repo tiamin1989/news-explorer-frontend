@@ -43,16 +43,9 @@
   font-family: 'Roboto Slab', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
-  font-size: 4.16vw;
-  line-height: 63px;
+  font-size: 60px;
+  line-height: 64px;
   color: #fff;
-}
-
-@media all and (min-width: 1440px) {
-  .search__title {
-    font-size: 60px;
-    line-height: 64px;
-  }
 }
 
 @media all and (max-width: 1439px) {
@@ -91,12 +84,6 @@
   padding: 65px 0 82px;
   min-width: 268px;
   height: 61px;
-}
-
-@media all and (min-width: 1440px) {
-  .search__form {
-    padding: 65px 0 82px;
-  }
 }
 
 @media all and (max-width: 1439px) {
@@ -172,7 +159,6 @@
     color: #B6BCBF;
   }
 }
-
 
 .search__form-mail-input:focus {
   outline: none;

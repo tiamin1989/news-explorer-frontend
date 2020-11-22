@@ -11,12 +11,6 @@
   }
 }
 
-@media all and (max-width: 730px) {
-  .footer__copyright {
-    order: 2;
-  }
-}
-
 .footer__copyright {
   padding: 0 0 0 95px;
   font-family: 'Roboto', Tahoma, sans-serif;
@@ -37,6 +31,12 @@
 @media all and (max-width: 768px) {
   .footer__copyright {
     padding: 0 0 0 32px;
+  }
+}
+
+@media all and (max-width: 730px) {
+  .footer__copyright {
+    order: 2;
   }
 }
 

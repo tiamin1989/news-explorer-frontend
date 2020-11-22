@@ -1,23 +1,18 @@
 import React from 'react';
 import { /* Route, Switch, */ withRouter /* Redirect, useHistory */ } from 'react-router-dom';
 import Header from '../Header/Header';
-import About from '../About/About';
 import Footer from '../Footer/Footer';
-import NewsCardList from '../NewsCardList/NewsCardList';
-import Preloader from '../Preloader/Preloader';
-/* import Main from '../Main/Main.js';
+import Main from '../Main/Main';
+/*
 import Navigation from '../Navigation/Navigation.js';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
 import SavedNews from '../SavedNews/SavedNews';
  */
-
-import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 import './App.css';
-
-const img = '../../images/card-def-image.png';
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(true);
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
   function handleOnClick() {
@@ -35,6 +30,7 @@ function App() {
 
   function handleCloseClick() {
     setIsHamburgerActive(false);
+    setIsLoading(true);
   }
 
   React.useEffect(() => {
@@ -49,14 +45,10 @@ function App() {
         isHamburgerActive={isHamburgerActive}
         onCloseClick={handleCloseClick}
       />
-      <SavedNewsHeader/>
-      <NewsCardList
-        img={img}
+      <Main
+        isLoading={isLoading}
       />
-      <Preloader />
-      <About />
       <Footer />
-
     </>
   );
 }

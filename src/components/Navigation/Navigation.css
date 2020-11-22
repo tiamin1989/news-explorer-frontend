@@ -70,12 +70,7 @@
   border: 1px solid #fff;
   border-radius: 24px;
   transition: color .2s;
-}
-
-@media all and (max-width: 1439px) {
-  .header__nav_button {
-    font-size: 16px;
-  }
+  font-size: 16px;
 }
 
 @media all and (max-width: 768px) {

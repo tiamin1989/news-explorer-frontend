@@ -11,12 +11,6 @@
   background-position: 50%;
 }
 
-/* @media all and (max-width: 696px) {
-  .header__wrapper {
-    padding: 0 31px 0;
-  }
-} */
-
 .header_white {
   background: #fff;
 }

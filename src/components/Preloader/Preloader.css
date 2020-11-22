@@ -10,15 +10,9 @@
   align-items: center;
 }
 
-/* .loader__circle {
-  width: 74px;
-  height: 74px;
-  animation: rotation 10s infinite linear;
-} */
-
 .loader__title {
   margin: 24px 0 0;
-  font-family: Roboto;
+  font-family: 'Roboto', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
@@ -28,7 +22,7 @@
 }
 
 .loader__title_not-found {
-  font-family: Roboto Slab;
+  font-family: 'Roboto Slab', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
@@ -40,7 +34,7 @@
 
 .loader__description {
   padding: 0 16px 0;
-  font-family: Roboto;
+  font-family: 'Roboto', Tahoma, sans-serif;
   font-style: normal;
   font-weight: normal;
   font-size: 18px;
