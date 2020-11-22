@@ -1,7 +1,6 @@
 .card-list__news-card {
   margin: 0;
   padding: 0 9px 0;
-/*   max-width: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,12 +26,6 @@
   height: 196px;
   border-radius: 18px 18px 0 0;
 }
-
-/* @media all and (max-width: 540px) {
-  .card-list__card-image {
-    height: 440px;
-  }
-} */
 
 .card-list__wrapper {
   background: #FFFFFF;

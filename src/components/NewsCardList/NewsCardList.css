@@ -57,12 +57,6 @@
   }
 }
 
-/* @media all and (max-width: 345px) {
-  .card-list__news-cards {
-    min-height: 440px;
-  }
-} */
-
 .card-list__more {
   margin: 47px auto 82px;
   border: 0;
