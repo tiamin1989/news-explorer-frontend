@@ -181,7 +181,7 @@
 }
 
 .header__nav-mobile-item-button {
-  font-family: Roboto;
+  font-family: 'Roboto', Tahoma, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -216,7 +216,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  font-family: Roboto;
+  font-family: 'Roboto', Tahoma, sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;

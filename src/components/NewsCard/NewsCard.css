@@ -1,24 +1,43 @@
 .card-list__news-card {
-  max-width: 400px;
-  max-height: 576px;
+  margin: 0;
+  padding: 0 9px 0;
+/*   max-width: 400px; */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-radius: 16px;
-  margin: 46px 0 0;
-  padding: 0 9px 0;
   cursor: pointer;
+}
+
+@media all and (max-width: 768px) {
+  .card-list__news-card {
+    padding: 0 5px 0;
+  }
+}
+
+@media all and (max-width: 530px) {
+  .card-list__news-card {
+    max-height: 440px;
+  }
 }
 
 .card-list__card-image {
   max-height: 272px;
+  object-fit: cover;
+  height: 196px;
   border-radius: 18px 18px 0 0;
 }
+
+/* @media all and (max-width: 540px) {
+  .card-list__card-image {
+    height: 440px;
+  }
+} */
 
 .card-list__wrapper {
   background: #FFFFFF;
   border-radius: 0 0 18px 18px;
-  overflow: hidden;
+  padding: 0px 19px 0;
 }
 
 .card-list__card-date {
@@ -28,7 +47,7 @@
   font-size: 18px;
   line-height: 24px;
   color: #B6BCBF;
-  padding: 20px 25px 0;
+  padding: 20px 0px 0;
   display: block;
 }
 
@@ -40,7 +59,20 @@
   line-height: 30px;
   color: #1A1B22;
   margin: 0;
-  padding: 12px 24px 0;
+  padding: 12px 0px 0;
+}
+
+@media all and (max-width: 924px) {
+  .card-list__card-title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .card-list__card-title {
+    padding: 12px 0px 0;
+  }
 }
 
 .card-list__card-text {
@@ -51,7 +83,24 @@
   line-height: 22px;
   color: #1A1B22;
   margin: 0;
-  padding: 16px 25px 0;
+  padding: 16px 0px 0;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+}
+
+@media all and (max-width: 768px) {
+  .card-list__card-text {
+    padding: 10px 0px 0;
+  }
+}
+
+@media all and (max-width: 530px) {
+  .card-list__card-text {
+    min-height: 110px;
+  }
 }
 
 .card-list__card-source {
@@ -63,6 +112,12 @@
   letter-spacing: 0.4px;
   text-transform: uppercase;
   color: #B6BCBF;
-  padding: 19px 24px 22px;
+  padding: 19px 0px 22px;
   display: block;
+}
+
+@media all and (max-width: 768px) {
+  .card-list__card-source {
+    padding: 12px 0px 22px;
+  }
 }
