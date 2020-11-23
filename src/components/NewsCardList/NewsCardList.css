@@ -73,3 +73,18 @@
   color: #1A1B22;
   cursor: pointer;
 }
+
+.card-list__more:hover {
+  opacity: .9;
+}
+
+.card-list__more_locked {
+  background: #E6E8EB;
+  font-family: 'Roboto', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  color: #B6BCBF;
+}

@@ -1,6 +1,6 @@
 import React from 'react';
 import './NewsCard.css';
-import PropTypes from 'prop-types';
+/* import PropTypes from 'prop-types'; */
 import img from '../../images/card-def-image.png';
 
 function NewsCard() {
@@ -18,8 +18,8 @@ function NewsCard() {
   );
 }
 
-NewsCard.propTypes = {
+/* NewsCard.propTypes = {
   img: PropTypes.bool.isRequired,
-};
+}; */
 
 export default NewsCard;
