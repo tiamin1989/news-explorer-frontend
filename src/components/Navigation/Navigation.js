@@ -6,13 +6,7 @@ import './Navigation.css';
 
 function Navigation({ loggedIn, unSmallDesktop }) {
   const location = useLocation();
-  /* const [isHamburgerActive, setIsHamburgerActive] = React.useState(false); */
-  /*  const toggleHamburger = () => {
-    setIsHamburgerActive(!isHamburgerActive);
-  }; */
-  /*   React.useEffect(() => {
-    toggleHamburger(isHamburgerActive);
-  }, [isHamburgerActive]); */
+
   return (
     unSmallDesktop ? (
       <>
