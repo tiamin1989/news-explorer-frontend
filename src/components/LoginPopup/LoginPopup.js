@@ -23,7 +23,7 @@ function LoginPopup(
       onSubmit={handleSubmit}
       name="login"
       title="Вход"
-      isOpen={true}
+      isOpen={isOpen}
       onClose={onClose}>
       <label htmlFor="login-email" className="popup__label">Email</label>
       <input

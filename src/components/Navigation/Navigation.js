@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 
 import './Navigation.css';
 
-function Navigation({ loggedIn, unSmallDesktop }) {
+function Navigation({ loggedIn, unSmallDesktop, onLoginClick }) {
   const location = useLocation();
 
   return (
@@ -24,7 +24,7 @@ function Navigation({ loggedIn, unSmallDesktop }) {
               </li>
             </>)
             : (<li className="header__nav-button">
-              <button className="header__nav-item-button">Авторизоваться</button>
+              <button className="header__nav-item-button" onClick={onLoginClick}>Авторизоваться</button>
             </li>)
           }
         </ul>
@@ -44,7 +44,7 @@ function Navigation({ loggedIn, unSmallDesktop }) {
               </>)
               : (<>
                 <li className="header__nav-mobile-item">
-                  <button className="header__nav-mobile-item-button">Авторизоваться</button>
+                  <button className="header__nav-mobile-item-button" onClick={onLoginClick}>Авторизоваться</button>
                 </li>
               </>)
             }
@@ -57,6 +57,7 @@ function Navigation({ loggedIn, unSmallDesktop }) {
 Navigation.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   unSmallDesktop: PropTypes.bool.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
 };
 
 export default Navigation;

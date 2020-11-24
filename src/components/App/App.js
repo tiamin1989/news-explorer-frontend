@@ -12,7 +12,7 @@ import SavedNews from '../SavedNews/SavedNews';
 import './App.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(true);
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
@@ -44,6 +44,10 @@ function App() {
     setLoginPopupOpen(false);
   }
 
+  function handleLoginClick() {
+    setLoginPopupOpen(true);
+  }
+
   React.useEffect(() => {
     console.log('привет');
   }, []);
@@ -55,6 +59,7 @@ function App() {
         onHamburgerClick={handleHamburgerClick}
         isHamburgerActive={isHamburgerActive}
         onCloseClick={handleCloseClick}
+        onLoginClick={handleLoginClick}
       />
       <Main
         isLoading={isLoading}

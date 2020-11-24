@@ -11,6 +11,7 @@ import './Header.css';
 
 function Header({
   loggedIn,
+  onLoginClick,
 }) {
   const location = useLocation();
   const history = useHistory();
@@ -38,12 +39,14 @@ function Header({
             <Navigation
               loggedIn={loggedIn}
               unSmallDesktop={false}
+              onLoginClick={onLoginClick}
             />
           </div>
         </div>
         <Navigation
           loggedIn={loggedIn}
           unSmallDesktop={true}
+          onLoginClick={onLoginClick}
         />
         <img src={location.pathname === '/saved-news' ? hamburgerWhite : hamburger} alt="Открыть" className={`header__hamburger-img${location.pathname === '/saved-news' ? ' header__hamburger-img_white' : ''}`} onClick={toggleHamburger} />
       </div>
@@ -55,6 +58,7 @@ function Header({
 
 Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
+  onLoginClick: PropTypes.func.isRequired,
 };
 
 export default Header;

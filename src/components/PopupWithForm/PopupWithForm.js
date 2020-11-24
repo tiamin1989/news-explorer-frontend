@@ -13,8 +13,29 @@ function PopupWithForm(
     onSubmit,
   },
 ) {
+  function handlePopupClick(e) {
+    e.preventDefault();
+    if (e.target === e.currentTarget) onClose();
+  }
+
+  function handleEscPress(e) {
+    if (e.key === 'Escape'
+      || e.key === 'Esc'
+      || e.keyCode === 27) onClose();
+  }
+
+  React.useEffect(
+    () => {
+      const rootNode = document.querySelector('#root');
+      rootNode.addEventListener('keydown', handleEscPress);
+      return () => {
+        rootNode.removeEventListener('keydown', handleEscPress);
+      };
+    },
+  );
+
   return (
-    <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : 'popup_closed'}`}>
+    <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : 'popup_closed'}`} onClick={handlePopupClick}>
       <form className="popup__container" name={name} onSubmit={onSubmit} noValidate>
         <h2 className="popup__title">{title}</h2>
         <button type="button" className="popup__close" onClick={onClose} />
