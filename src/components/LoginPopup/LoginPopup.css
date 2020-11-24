@@ -77,6 +77,11 @@
   color: #000;
 }
 
+.popup__offer_left {
+  margin: 14px 36px 31px;
+  align-self: flex-start;
+}
+
 .popup__offer-link {
   text-decoration: none;
   color: #2F71E5;

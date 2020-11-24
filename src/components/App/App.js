@@ -5,6 +5,7 @@ import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
+import SuccessMessagePopup from '../SuccessMessagePopup/SuccessMessagePopup';
 /*
 import Navigation from '../Navigation/Navigation.js';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
@@ -19,6 +20,7 @@ function App() {
 
   const [isLoginPopupOpen, setLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setRegisterPopupOpen] = React.useState(false);
+  const [isSuccessMessagePopupOpen, setSuccessMessagePopupOpen] = React.useState(true);
 
   function handleOnClick() {
     if (loggedIn) {
@@ -46,6 +48,10 @@ function App() {
     setRegisterPopupOpen(false);
   }
 
+  function handleSuccessMessagePopupClose() {
+    setSuccessMessagePopupOpen(false);
+  }
+
   function handleLoginPopupSubmit() {
     setLoginPopupOpen(false);
   }
@@ -57,6 +63,7 @@ function App() {
 
   function handleLoginClick() {
     setRegisterPopupOpen(false);
+    setSuccessMessagePopupOpen(false);
     setLoginPopupOpen(true);
   }
 
@@ -87,6 +94,11 @@ function App() {
       <RegisterPopup
         isOpen={isRegisterPopupOpen}
         onClose={handleRegisterPopupClose}
+        onLoginClick={handleLoginClick}
+      />
+      <SuccessMessagePopup
+        isOpen={isSuccessMessagePopupOpen}
+        onClose={handleSuccessMessagePopupClose}
         onLoginClick={handleLoginClick}
       />
     </>
