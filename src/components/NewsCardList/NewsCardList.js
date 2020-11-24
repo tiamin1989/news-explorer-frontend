@@ -8,13 +8,13 @@ function NewsCardList() {
 
   return (
     <section className="card-list">
-      {location.pathname === './saved-news' ? (<h2 className="card-list__title">Результаты поиска</h2>) : ''}
+      {location.pathname !== '/saved-news' ? (<h2 className="card-list__title">Результаты поиска</h2>) : ''}
       <ul className="card-list__news-cards">
         <NewsCard />
         <NewsCard />
         <NewsCard />
       </ul>
-      <button className="card-list__more">Показать еще</button>
+      {location.pathname !== '/saved-news' ? (<button className="card-list__more">Показать еще</button>) : ''}
     </section>
   );
 }

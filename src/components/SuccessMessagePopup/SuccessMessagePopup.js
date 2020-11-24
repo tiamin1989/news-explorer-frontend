@@ -8,16 +8,9 @@ function SuccessMessagePopup(
   {
     isOpen,
     onClose,
-    onRegister,
     onLoginClick,
   },
 ) {
-  function handleSubmit(e) {
-    e.preventDefault();
-    onRegister();
-    onClose();
-  }
-
   function handleLoginClick() {
     onClose();
     onLoginClick();
@@ -25,7 +18,6 @@ function SuccessMessagePopup(
 
   return (
     <PopupWithForm
-      onSubmit={handleSubmit}
       name="success"
       title="Пользователь успешно зарегистрирован!"
       isOpen={isOpen}

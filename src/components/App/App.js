@@ -22,6 +22,12 @@ function App() {
   const [isRegisterPopupOpen, setRegisterPopupOpen] = React.useState(false);
   const [isSuccessMessagePopupOpen, setSuccessMessagePopupOpen] = React.useState(true);
 
+  function closeAllPopups() {
+    setRegisterPopupOpen(false);
+    setSuccessMessagePopupOpen(false);
+    setLoginPopupOpen(false);
+  }
+
   function handleOnClick() {
     if (loggedIn) {
       localStorage.removeItem('jwt');
@@ -62,14 +68,9 @@ function App() {
   }
 
   function handleLoginClick() {
-    setRegisterPopupOpen(false);
-    setSuccessMessagePopupOpen(false);
+    closeAllPopups();
     setLoginPopupOpen(true);
   }
-
-  React.useEffect(() => {
-    console.log('привет');
-  }, []);
 
   return (
     <>

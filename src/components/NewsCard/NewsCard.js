@@ -1,13 +1,47 @@
 import React from 'react';
 import './NewsCard.css';
-/* import PropTypes from 'prop-types'; */
+import PropTypes from 'prop-types';
 import img from '../../images/card-def-image.png';
 
-function NewsCard() {
+function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
+  const message = React.useRef(null);
+
+  function showMessage(e) {
+    if (e.target === e.currentTarget) {
+      e.target.classList.add('card-list__card-added_active');
+      message.current.classList.add('card-list__card-message_active');
+    }
+  }
+
+  function hideMessage(e) {
+    if (e.target === e.currentTarget) {
+      e.target.classList.remove('card-list__card-added_active');
+      message.current.classList.remove('card-list__card-message_active');
+    }
+  }
+
   return (
     <li className="card-list__news-card">
+      {
+        !cardCategory ? (
+          <>
+            <span className="card-list__card-category">{/* {cardCategory} */}cardCategory</span>
+          </>
+        ) : ''
+      }
       <img src={img} className="card-list__card-image" />
-      <span className="card-list__card-added card-list__card-added_true"></span>
+      {
+        isLoggedIn ? (
+          <>
+            <button className={`card-list__card-added${isAdded ? ' card-list__card-added_active' : ''}`} />
+          </>
+        ) : (
+            <>
+              <button className="card-list__card-added" onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+              <span ref={message} className="card-list__card-message">Войдите, чтобы сохранять статьи</span>
+            </>
+        )
+      }
       <div className="card-list__wrapper">
         <span className="card-list__card-date">2 августа, 2019</span>
         <h2 className="card-list__card-title">Национальное достояние – парки</h2>
@@ -18,8 +52,10 @@ function NewsCard() {
   );
 }
 
-/* NewsCard.propTypes = {
-  img: PropTypes.bool.isRequired,
-}; */
+NewsCard.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
+  isAdded: PropTypes.bool,
+  cardCategory: PropTypes.string,
+};
 
 export default NewsCard;
