@@ -26,10 +26,10 @@ function PopupWithForm(
 
   React.useEffect(
     () => {
-      const rootNode = document.querySelector('#root');
-      rootNode.addEventListener('keydown', handleEscPress);
+      const body = document.querySelector('body');
+      body.addEventListener('keydown', handleEscPress);
       return () => {
-        rootNode.removeEventListener('keydown', handleEscPress);
+        body.removeEventListener('keydown', handleEscPress);
       };
     },
   );
@@ -48,7 +48,7 @@ function PopupWithForm(
 PopupWithForm.propTypes = {
   title: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  children: PropTypes.node.isRequired,
+  children: PropTypes.node,
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
   onSubmit: PropTypes.func,

@@ -4,6 +4,7 @@ import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import LoginPopup from '../LoginPopup/LoginPopup';
+import RegisterPopup from '../RegisterPopup/RegisterPopup';
 /*
 import Navigation from '../Navigation/Navigation.js';
 import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
@@ -17,6 +18,7 @@ function App() {
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
   const [isLoginPopupOpen, setLoginPopupOpen] = React.useState(false);
+  const [isRegisterPopupOpen, setRegisterPopupOpen] = React.useState(false);
 
   function handleOnClick() {
     if (loggedIn) {
@@ -40,11 +42,21 @@ function App() {
     setLoginPopupOpen(false);
   }
 
+  function handleRegisterPopupClose() {
+    setRegisterPopupOpen(false);
+  }
+
   function handleLoginPopupSubmit() {
     setLoginPopupOpen(false);
   }
 
+  function handleRegisterClick() {
+    setLoginPopupOpen(false);
+    setRegisterPopupOpen(true);
+  }
+
   function handleLoginClick() {
+    setRegisterPopupOpen(false);
     setLoginPopupOpen(true);
   }
 
@@ -70,6 +82,12 @@ function App() {
         isOpen={isLoginPopupOpen}
         onClose={handleLoginPopupClose}
         onLogin={handleLoginPopupSubmit}
+        onRegisterClick={handleRegisterClick}
+      />
+      <RegisterPopup
+        isOpen={isRegisterPopupOpen}
+        onClose={handleRegisterPopupClose}
+        onLoginClick={handleLoginClick}
       />
     </>
   );

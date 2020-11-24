@@ -14,7 +14,7 @@ function LoginPopup(
 ) {
   function handleSubmit(e) {
     e.preventDefault();
-    onLogin(isOpen);
+    onLogin();
     onClose();
   }
 
@@ -56,7 +56,7 @@ function LoginPopup(
         value="Войти"
         className="popup__submit-button"
       />
-      <span className="popup__offer">или <a className="popup__offer-link" href="#" onClick={onRegisterClick}>Зарегистрироваться</a></span>
+      <span className="popup__offer">или <a onClick={onRegisterClick} className="popup__offer-link" href="#">Зарегистрироваться</a></span>
     </PopupWithForm>
   );
 }
