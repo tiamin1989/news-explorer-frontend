@@ -30,7 +30,6 @@ function SuccessMessagePopup(
 SuccessMessagePopup.propTypes = {
   isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
-  onRegister: PropTypes.func.isRequired,
   onLoginClick: PropTypes.func.isRequired,
 };
 

@@ -67,6 +67,10 @@ function App() {
     setLoginPopupOpen(true);
   }
 
+  function handleRegisterPopupSubmit() {
+
+  }
+
   return (
     <>
       <Header
@@ -90,6 +94,7 @@ function App() {
       <RegisterPopup
         isOpen={isRegisterPopupOpen}
         onClose={handleRegisterPopupClose}
+        onRegister={handleRegisterPopupSubmit}
         onLoginClick={handleLoginClick}
       />
       <SuccessMessagePopup
