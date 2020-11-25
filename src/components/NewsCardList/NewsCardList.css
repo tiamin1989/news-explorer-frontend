@@ -23,7 +23,7 @@
 }
 
 .card-list__news-cards {
-  padding: 62px 0 0;
+  padding: 62px 0 62px;
   margin: 0;
   display: grid;
   align-content: start;
@@ -40,13 +40,13 @@
 
 @media all and (max-width: 1439px) {
   .card-list__news-cards {
-    padding: 4.3vw 4vw 0;
+    padding: 4.3vw 4vw 62px;
   }
 }
 
 @media all and (max-width: 768px) {
   .card-list__news-cards {
-    padding: 4.3vw 3vw 0;
+    padding: 4.3vw 3vw 62px;
   }
 }
 
@@ -66,7 +66,7 @@
 }
 
 .card-list__more {
-  margin: 47px auto 82px;
+  margin: 2px auto 82px;
   border: 0;
   width: 288px;
   height: 64px;

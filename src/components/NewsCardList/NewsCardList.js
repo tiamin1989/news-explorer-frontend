@@ -13,18 +13,18 @@ function NewsCardList({ loggedIn }) {
       <ul className="card-list__news-cards">
         <NewsCard
           isLoggedIn={loggedIn}
-          cardCategory={loggedIn ? 'Рубрика' : ''}
-          isAdded={loggedIn}
+          cardCategory={location.pathname === '/saved-news' ? 'Рубрика' : ''}
+          isAdded={true}
         />
         <NewsCard
           isLoggedIn={loggedIn}
-          cardCategory={loggedIn ? 'Рубрика' : ''}
-          isAdded={loggedIn}
+          cardCategory={location.pathname === '/saved-news' ? 'Рубрика' : ''}
+          isAdded={true}
         />
         <NewsCard
           isLoggedIn={loggedIn}
-          cardCategory={loggedIn ? 'Рубрика' : ''}
-          isAdded={loggedIn}
+          cardCategory={location.pathname === '/saved-news' ? 'Рубрика' : ''}
+          isAdded={true}
         />
       </ul>
       {location.pathname !== '/saved-news' ? (<button className="card-list__more">Показать еще</button>) : ''}

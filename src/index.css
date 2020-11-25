@@ -3,36 +3,9 @@
 @import url('./fonts/roboto-slab.css');
 @import url('./fonts/source-sans-pro.css');
 
-/* Pixel Glass */
-@import url('./pixelglass/styles.css');
-/* /Pixel Glass */
-
 #root {
   margin: 0 auto 0;
   max-width: 1466px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
-/* Pixel Glass */
-HTML {
-  background-repeat: no-repeat;
-  background-position:  50% 0;
-  /* По умолчанию показывается мобильный макет */
-  background-image: url( "./img/320.png" );
-}
-/* Планшет */
-@media ( min-width: 768px ) {
-  HTML {
-    /* Планшетный макет */
-    background-image: url( "./img/768.png" );
-  }
-}
-/* Десктоп */
-@media ( min-width: 1440px ) {
-  HTML {
-    /* Десктопный макет */
-    background-image: url( "./img/1440.png" );
-  }
-}
-/* /Pixel Glass */

@@ -31,9 +31,10 @@ function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
       }
       <img src={img} alt="Изображение новости" className="card-list__card-image" />
       {
-        isLoggedIn ? (
+        !isLoggedIn ? (
           <>
-            <button className={`card-list__card-added${isAdded ? ' card-list__card-added_active' : ''}`} />
+            <button className={`card-list__card-added${isAdded ? ' card-list__card-added_delete' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+            <span ref={message} className="card-list__card-message card-list__card-message_big">Убрать из сохранённых</span>
           </>
         ) : (
             <>

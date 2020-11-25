@@ -8,7 +8,7 @@ function SearchForm() {
       <p className="search__subtitle">Находите самые свежие статьи на любую тему и сохраняйте в своём личном кабинете.</p>
       <form action="POST" id="search__form" className="search__form">
         <span className="search__form-mail">
-          <input type="text" placeholder="Введите тему новости" className="search__form-mail-input" />
+          <input type="text" placeholder="Введите тему новости" className="search__form-mail-input" required />
           <input type="submit" value="Искать" className="search__submit" />
         </span>
       </form>

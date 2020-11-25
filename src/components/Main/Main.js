@@ -16,7 +16,7 @@ function Main({ loggedIn }) {
       /> : <NewsCardList
           loggedIn={loggedIn}
         />}
-      <About />
+      {location.pathname !== '/saved-news' ? <About /> : ''}
     </main>
   );
 }
