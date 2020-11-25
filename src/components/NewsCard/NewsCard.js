@@ -23,9 +23,9 @@ function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
   return (
     <li className="card-list__news-card">
       {
-        !cardCategory ? (
+        cardCategory ? (
           <>
-            <span className="card-list__card-category">{/* {cardCategory} */}cardCategory</span>
+            <span className="card-list__card-category">{cardCategory}</span>
           </>
         ) : ''
       }

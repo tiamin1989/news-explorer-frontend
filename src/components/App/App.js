@@ -1,20 +1,16 @@
 import React from 'react';
-import { /* Route, Switch, */ withRouter /* Redirect, useHistory */ } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import SuccessMessagePopup from '../SuccessMessagePopup/SuccessMessagePopup';
-/*
-import Navigation from '../Navigation/Navigation.js';
-import PopupWithForm from '../PopupWithForm/PopupWithForm.js';
-import SavedNews from '../SavedNews/SavedNews';
- */
+
 import './App.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(true);
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
@@ -31,7 +27,6 @@ function App() {
   function handleOnClick() {
     if (loggedIn) {
       localStorage.removeItem('jwt');
-      /* setCurrentUser(userContext); */
       setLoggedIn(false);
     }
   }

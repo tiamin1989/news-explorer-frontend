@@ -10,9 +10,21 @@ function NewsCardList() {
     <section className="card-list">
       {location.pathname !== '/saved-news' ? (<h2 className="card-list__title">Результаты поиска</h2>) : ''}
       <ul className="card-list__news-cards">
-        <NewsCard />
-        <NewsCard />
-        <NewsCard />
+        <NewsCard
+          isLoggedIn={true}
+          cardCategory='Рубрика'
+          isAdded={true}
+        />
+        <NewsCard
+          isLoggedIn={true}
+          cardCategory='Рубрика2'
+          isAdded={false}
+        />
+        <NewsCard
+          isLoggedIn={true}
+          cardCategory='Рубрика2'
+          isAdded={false}
+        />
       </ul>
       {location.pathname !== '/saved-news' ? (<button className="card-list__more">Показать еще</button>) : ''}
     </section>

@@ -1,22 +1,19 @@
 import React from 'react';
+import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import About from '../About/About';
+import SavedNews from '../SavedNews/SavedNews';
 import NewsCardList from '../NewsCardList/NewsCardList';
-import Preloader from '../Preloader/Preloader';
-import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 import './Main.css';
 
 function Main({ isLoading }) {
-  const img = '../../images/card-def-image.png';
-
+  const location = useLocation();
   return (
     <main className="main">
-      <SavedNewsHeader />
-      {isLoading ? <NewsCardList
-        img={img}
-      /> : <Preloader
-          isLoading={isLoading} />}
+      {location.pathname === '/saved-news' ? <SavedNews
+        isLoading={isLoading}
+      /> : <NewsCardList />}
       <About />
     </main>
   );
