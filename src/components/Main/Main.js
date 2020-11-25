@@ -7,20 +7,23 @@ import NewsCardList from '../NewsCardList/NewsCardList';
 
 import './Main.css';
 
-function Main({ isLoading }) {
+function Main({ loggedIn }) {
   const location = useLocation();
   return (
     <main className="main">
       {location.pathname === '/saved-news' ? <SavedNews
-        isLoading={isLoading}
-      /> : <NewsCardList />}
+        isLoggedIn={true}
+      /> : <NewsCardList
+          loggedIn={loggedIn}
+        />}
       <About />
     </main>
   );
 }
 
 Main.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default Main;

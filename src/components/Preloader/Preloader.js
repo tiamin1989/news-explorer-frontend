@@ -15,7 +15,7 @@ function Preloader({ isLoading }) {
           </div>
         ) : (
           <div className="loader__not-found">
-            <img src={notFound} className="loader__not-found-image" />
+            <img src={notFound} alt="Не найдено" className="loader__not-found-image" />
             <h2 className="loader__title loader__title_not-found">Ничего не найдено</h2>
             <p className="loader__description">К сожалению по вашему запросу ничего не найдено.</p>
           </div>

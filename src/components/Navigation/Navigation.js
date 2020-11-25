@@ -4,7 +4,14 @@ import PropTypes from 'prop-types';
 
 import './Navigation.css';
 
-function Navigation({ loggedIn, unSmallDesktop, onLoginClick }) {
+function Navigation(
+  {
+    loggedIn,
+    unSmallDesktop,
+    onLoginClick,
+    onUnLoginClick,
+  },
+) {
   const location = useLocation();
 
   return (
@@ -20,7 +27,8 @@ function Navigation({ loggedIn, unSmallDesktop, onLoginClick }) {
                 <Link to="/saved-news" className={`header__nav-item-link${location.pathname === '/saved-news' ? ' header__nav-item-link_white' : ''}`}>Сохраненные статьи</Link>
               </li>
               <li className="header__nav-button">
-                <Link to="/me" className={`header__nav-item-button header__nav-item-button_auth${location.pathname === '/saved-news' ? ' header__nav-item-button_white header__nav-item-button_auth_white' : ''}`}>Грета</Link>
+                <button className={`header__nav-item-button header__nav-item-button_auth
+              ${location.pathname === '/saved-news' ? ' header__nav-item-button_white header__nav-item-button_auth_white' : ''}`} onClick={onUnLoginClick}>Грета</button>
               </li>
             </>)
             : (<li className="header__nav-button">
@@ -41,6 +49,9 @@ function Navigation({ loggedIn, unSmallDesktop, onLoginClick }) {
                 <li className="header__nav-mobile-item">
                   <Link to="/saved-news" className="header__nav-mobile-item-link">Сохраненные статьи</Link>
                 </li>
+                <li className="header__nav-mobile-item">
+                  <button className="header__nav-mobile-item-button header__nav-mobile-item-button_auth" onClick={onUnLoginClick}>Грета</button>
+                </li>
               </>)
               : (<>
                 <li className="header__nav-mobile-item">
@@ -58,6 +69,7 @@ Navigation.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   unSmallDesktop: PropTypes.bool.isRequired,
   onLoginClick: PropTypes.func.isRequired,
+  onUnLoginClick: PropTypes.func.isRequired,
 };
 
 export default Navigation;

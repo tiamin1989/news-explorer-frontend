@@ -19,15 +19,21 @@
   }
 }
 
-@media all and (max-width: 768px) {
+@media all and (max-width: 940px) {
   .search {
     padding: 4.7vw 20vw 0;
   }
 }
 
-@media all and (max-width: 540px) {
+@media all and (max-width: 640px) {
   .search {
     padding: 4.7vw 6.9vw 0;
+  }
+}
+
+@media all and (max-width: 470px) {
+  .search {
+    padding: 4.7vw 6.9vw 60px;
   }
 }
 
@@ -98,6 +104,12 @@
   }
 }
 
+/* @media all and (max-width: 968px) {
+  .search__form {
+    margin: 103px 0 62px;
+  }
+} */
+
 @media all and (max-width: 320px) {
   .search__form {
     margin: 103px 0 62px;
@@ -116,12 +128,19 @@
   }
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 470px) {
   .search__form-mail {
     flex-direction: column;
     height: max-content;
   }
 }
+
+/* @media all and (max-width: 320px) {
+  .search__form-mail {
+    flex-direction: column;
+    height: max-content;
+  }
+} */
 
 .search__form-mail-input {
   margin-right: -28px;
@@ -144,7 +163,7 @@
   line-height: 22px;
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 470px) {
   .search__form-mail-input {
     padding: 0px 0px 0px 15px;
     height: 52px;
@@ -152,7 +171,7 @@
   }
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 470px) {
   .search__form-mail-input::placeholder {
     margin-left: 15px;
 
@@ -199,7 +218,7 @@
   }
 }
 
-@media all and (max-width: 320px) {
+@media all and (max-width: 470px) {
   .search__submit {
     margin: 20px 0 0;
     height: 52px;

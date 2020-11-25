@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, useHistory } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -11,12 +11,14 @@ import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(true);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const [isLoading, setIsLoading] = React.useState(false);
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
   const [isLoginPopupOpen, setLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setRegisterPopupOpen] = React.useState(false);
   const [isSuccessMessagePopupOpen, setSuccessMessagePopupOpen] = React.useState(true);
+
+  const history = useHistory();
 
   function closeAllPopups() {
     setRegisterPopupOpen(false);
@@ -71,6 +73,11 @@ function App() {
 
   }
 
+  function onUnLoginClick() {
+    history.push('./');
+    setLoggedIn(false);
+  }
+
   return (
     <>
       <Header
@@ -79,9 +86,11 @@ function App() {
         isHamburgerActive={isHamburgerActive}
         onCloseClick={handleCloseClick}
         onLoginClick={handleLoginClick}
+        onUnLoginClick={onUnLoginClick}
       />
       <Main
         isLoading={isLoading}
+        loggedIn={loggedIn}
       />
       <Footer />
 

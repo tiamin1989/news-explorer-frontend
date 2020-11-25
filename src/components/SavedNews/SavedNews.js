@@ -1,27 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import NewsCardList from '../NewsCardList/NewsCardList';
-import Preloader from '../Preloader/Preloader';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 import './SavedNews.css';
 
-function SavedNews({ isLoading }) {
-  const img = '../../images/card-def-image.png';
-
+function SavedNews({ loggedIn }) {
   return (
     <>
       <SavedNewsHeader />
-      {!isLoading ? <NewsCardList
-        img={img}
-      /> : <Preloader
-          isLoading={isLoading} />}
+      <NewsCardList
+        isLoggedIn={loggedIn}
+      />
     </>
   );
 }
 
 SavedNews.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
+  loggedIn: PropTypes.bool,
 };
 
 export default SavedNews;

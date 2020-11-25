@@ -29,7 +29,7 @@ function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
           </>
         ) : ''
       }
-      <img src={img} className="card-list__card-image" />
+      <img src={img} alt="Изображение новости" className="card-list__card-image" />
       {
         isLoggedIn ? (
           <>
