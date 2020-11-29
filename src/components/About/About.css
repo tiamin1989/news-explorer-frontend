@@ -1,0 +1,132 @@
+.about {
+  min-height: 29vw;
+  display: flex;
+  padding: 80px 55px 96px 0px;
+  justify-content: center;
+}
+
+@media all and (max-width: 1439px) {
+  .about {
+    padding: 80px 0px 95px 6.6vw;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .about {
+    padding: 5vw 31px 63px;
+  }
+}
+
+@media all and (max-width: 671px) {
+  .about {
+    flex-direction: column;
+    padding: 5vw 16px 63px;
+  }
+}
+
+.about__photo {
+  width: 464px;
+  height: 464px;
+  border-radius: 1000px;
+}
+
+@media all and (max-width: 1439px) {
+  .about__photo {
+    width: 32.1vw;
+    height: 32.1vw;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .about__photo {
+    margin: 24px 0 0;
+    width: 30.1vw;
+    height: 30.1vw;
+  }
+}
+
+@media all and (max-width: 671px) {
+  .about__photo {
+    margin: 0 auto 0;
+    width: 272px;
+    height: 272px;
+  }
+}
+
+@media all and (max-width: 320px) {
+  .about__photo {
+    align-self: flex-end;
+  }
+}
+
+.about__wrapper {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  padding: 0px 56px 0px;
+}
+
+
+@media all and (max-width: 1439px) {
+  .about__wrapper {
+    padding: 1.14vw 14.5vw 0px 57px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .about__wrapper {
+    padding: 0 0 0 33px;
+    line-height: 24px;
+  }
+}
+
+@media all and (max-width: 671px) {
+  .about__wrapper {
+    padding: 0;
+  }
+}
+
+.about__title {
+  margin: 52px 0 0;
+  font-family: 'Roboto Slab', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 40px;
+  line-height: 46px;
+  color: #1A1B22;
+}
+
+@media all and (max-width: 1439px) {
+  .about__title {
+    font-size: 2.79vw;
+  }
+}
+
+@media all and (max-width: 1179px) {
+  .about__title {
+    font-size: 30px;
+    margin: 0px 0 0;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .about__title {
+    margin: 0;
+  }
+}
+
+.about__paragraph {
+  margin: 22px 0px 5px 0;
+  font-family: 'Roboto', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #1A1B22;
+}
+
+@media all and (max-width: 768px) {
+  .about__paragraph {
+    margin: 7px 0px 17px 0;
+  }
+}

@@ -1,0 +1,203 @@
+.card-list__news-card {
+  position: relative;
+  margin: 0;
+  padding: 0 9px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border-radius: 16px;
+}
+
+.card-list__card-category {
+  padding: 0 12px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 24px;
+  left: 34px;
+  min-height: 40px;
+  min-width: fit-content;
+  font-family: 'Roboto', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: #000;
+  justify-content: center;
+  background: #FFF;
+  border-radius: 10px;
+}
+
+.card-list__card-added {
+  border: 0;
+  background: url('../../images/pocket-none.svg');
+  position: absolute;
+  top: 24px;
+  right: 35px;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.card-list__card-added:focus {
+  outline: none;
+  background: url('../../images/pocket-added.svg');
+}
+
+.card-list__card-added_active {
+  background: url('../../images/pocket-added.svg');
+}
+
+.card-list__card-added_delete {
+  background: url('../../images/card-delete.svg') no-repeat;
+  background-color: #fff;
+  background-position: 50% 50%;
+  border-radius: 10px;
+}
+
+.card-list__card-added_delete:hover {
+  background: url('../../images/card-delete-hover.svg') no-repeat;
+  background-color: #fff;
+  background-position: 50% 50%;
+  border-radius: 10px;
+}
+
+.card-list__card-message {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #FFF;
+  box-shadow: 0px 10px 22px rgba(59, 74, 116, 0.1);
+  border-radius: 10px;
+  position: absolute;
+  top: 24px;
+  right: 85px;
+  width: 182px;
+  height: 40px;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity .2s linear;
+  font-family: 'Roboto', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 12px;
+  text-align: center;
+}
+
+.card-list__card-message_big {
+  font-size: 12px;
+}
+
+.card-list__card-message_active {
+  visibility: visible;
+  opacity: 1;
+}
+
+@media all and (max-width: 768px) {
+  .card-list__news-card {
+    padding: 0 5px 0;
+  }
+}
+
+@media all and (max-width: 530px) {
+  .card-list__news-card {
+    max-height: 440px;
+  }
+}
+
+.card-list__card-image {
+  max-height: 272px;
+  object-fit: cover;
+  height: 196px;
+  border-radius: 18px 18px 0 0;
+}
+
+.card-list__wrapper {
+  background: #FFFFFF;
+  border-radius: 0 0 18px 18px;
+  padding: 0px 19px 0;
+}
+
+.card-list__card-date {
+  font-family: 'Source Sans Pro', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 24px;
+  color: #B6BCBF;
+  padding: 20px 0px 0;
+  display: block;
+}
+
+.card-list__card-title {
+  font-family: 'Roboto Slab', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 26px;
+  line-height: 30px;
+  color: #1A1B22;
+  margin: 0;
+  padding: 12px 0px 0;
+}
+
+@media all and (max-width: 924px) {
+  .card-list__card-title {
+    font-size: 22px;
+    line-height: 24px;
+  }
+}
+
+@media all and (max-width: 768px) {
+  .card-list__card-title {
+    padding: 12px 0px 0;
+  }
+}
+
+.card-list__card-text {
+  font-family: 'Roboto', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 22px;
+  color: #1A1B22;
+  margin: 0;
+  padding: 16px 0px 0;
+  overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 4;
+	-webkit-box-orient: vertical;
+}
+
+@media all and (max-width: 768px) {
+  .card-list__card-text {
+    padding: 10px 0px 0;
+  }
+}
+
+@media all and (max-width: 530px) {
+  .card-list__card-text {
+    min-height: 110px;
+  }
+}
+
+.card-list__card-source {
+  font-family: 'Roboto Slab', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.4px;
+  text-transform: uppercase;
+  color: #B6BCBF;
+  padding: 19px 0px 22px;
+  display: block;
+}
+
+@media all and (max-width: 768px) {
+  .card-list__card-source {
+    padding: 12px 0px 22px;
+  }
+}
