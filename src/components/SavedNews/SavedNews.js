@@ -10,7 +10,7 @@ function SavedNews({ loggedIn }) {
     <>
       <SavedNewsHeader />
       <NewsCardList
-        isLoggedIn={loggedIn}
+        loggedIn={loggedIn}
       />
     </>
   );

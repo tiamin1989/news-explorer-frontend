@@ -1,9 +1,19 @@
 import React from 'react';
 import './NewsCard.css';
 import PropTypes from 'prop-types';
-import img from '../../images/card-def-image.png';
 
-function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
+function NewsCard({
+  isLoggedIn,
+  isAdded,
+  cardCategory,
+  urlToImage,
+  /* url, */
+  title,
+  /*   source, */
+  publishedAt,
+  description,
+  searchPage,
+}) {
   const message = React.useRef(null);
 
   function showMessage(e) {
@@ -23,17 +33,20 @@ function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
   return (
     <li className="card-list__news-card">
       {
-        cardCategory ? (
+        !searchPage ? (
           <>
             <span className="card-list__card-category">{cardCategory}</span>
           </>
         ) : ''
       }
-      <img src={img} alt="Изображение новости" className="card-list__card-image" />
+      <img src={urlToImage} alt="Изображение новости" className="card-list__card-image" />
       {
-        !isLoggedIn ? (
+        isLoggedIn ? (
           <>
-            <button className={`card-list__card-added${isAdded ? ' card-list__card-added_delete' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+            {searchPage
+              ? <button className={`card-list__card-added${isAdded ? ' card-list__card-added_added' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+              : <button className={`card-list__card-added${isAdded ? ' card-list__card-added_delete' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+            }
             <span ref={message} className="card-list__card-message card-list__card-message_big">Убрать из сохранённых</span>
           </>
         ) : (
@@ -44,10 +57,10 @@ function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
         )
       }
       <div className="card-list__wrapper">
-        <span className="card-list__card-date">2 августа, 2019</span>
-        <h2 className="card-list__card-title">Национальное достояние – парки</h2>
-        <p className="card-list__card-text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-        <span className="card-list__card-source">Лента.ру</span>
+        <span className="card-list__card-date">{publishedAt}</span>
+        <h2 className="card-list__card-title">{title}</h2>
+        <p className="card-list__card-text">{description}</p>
+        <span className="card-list__card-source">{/* source.name */}</span>
       </div>
     </li>
   );
@@ -57,6 +70,13 @@ NewsCard.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
   isAdded: PropTypes.bool,
   cardCategory: PropTypes.string,
+  /* url: PropTypes.url, */
+  urlToImage: PropTypes.string,
+  title: PropTypes.string,
+  source: PropTypes.object,
+  publishedAt: PropTypes.string,
+  description: PropTypes.string,
+  searchPage: PropTypes.bool.isRequired,
 };
 
 export default NewsCard;

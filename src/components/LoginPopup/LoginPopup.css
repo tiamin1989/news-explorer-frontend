@@ -80,6 +80,7 @@
 .popup__offer_left {
   margin: 14px 36px 31px;
   align-self: flex-start;
+  text-align: left;
 }
 
 .popup__offer-link {

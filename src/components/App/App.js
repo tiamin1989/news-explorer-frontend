@@ -1,28 +1,39 @@
 import React from 'react';
-import { withRouter, useHistory } from 'react-router-dom';
+import { withRouter, useHistory, useLocation } from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
+import About from '../About/About';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
-import SuccessMessagePopup from '../SuccessMessagePopup/SuccessMessagePopup';
+import MessagePopup from '../MessagePopup/MessagePopup';
+
+import connectNewsApi from '../../utils/utils';
 
 import './App.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(true);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [isSearching, setIsSearching] = React.useState(false);
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
   const [isLoginPopupOpen, setLoginPopupOpen] = React.useState(false);
   const [isRegisterPopupOpen, setRegisterPopupOpen] = React.useState(false);
-  const [isSuccessMessagePopupOpen, setSuccessMessagePopupOpen] = React.useState(true);
+  const [isMessagePopupOpen, setMessagePopupOpen] = React.useState(false);
+
+  const [messagePopupName, setMessagePopupName] = React.useState('');
+  const [messagePopupTitle, setMessagePopupTitle] = React.useState('');
+  const [messagePopupContent, setMessagePopupContent] = React.useState('');
+
+  const [cards, setCards] = React.useState([]);
 
   const history = useHistory();
+  const location = useLocation();
 
   function closeAllPopups() {
     setRegisterPopupOpen(false);
-    setSuccessMessagePopupOpen(false);
+    setMessagePopupOpen(false);
     setLoginPopupOpen(false);
   }
 
@@ -51,8 +62,8 @@ function App() {
     setRegisterPopupOpen(false);
   }
 
-  function handleSuccessMessagePopupClose() {
-    setSuccessMessagePopupOpen(false);
+  function handleMessagePopupClose() {
+    setMessagePopupOpen(false);
   }
 
   function handleLoginPopupSubmit() {
@@ -78,6 +89,34 @@ function App() {
     setLoggedIn(false);
   }
 
+  function showMessage({ name, title, content }) {
+    closeAllPopups();
+    setMessagePopupName(name);
+    setMessagePopupTitle(title);
+    setMessagePopupContent(content);
+    setMessagePopupOpen(true);
+  }
+
+  function handleSearchSubmit(query) {
+    setIsSearching(true);
+    setIsLoading(true);
+    connectNewsApi.getNews(query)
+      .then((res) => {
+        setCards(res.articles);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        showMessage({
+          name: 'failure',
+          title: 'Произошла ошибка',
+          content: (<span className="popup__offer popup__offer_left">
+            Во время запроса произошла ошибка. Возможно, проблема с соединением
+            или сервер недоступен. Подождите немного и попробуйте ещё раз
+          </span>),
+        });
+      });
+  }
+
   return (
     <>
       <Header
@@ -87,11 +126,15 @@ function App() {
         onCloseClick={handleCloseClick}
         onLoginClick={handleLoginClick}
         onUnLoginClick={onUnLoginClick}
+        onSearchSubmit={handleSearchSubmit}
+        onError={showMessage}
       />
-      <Main
+      {isSearching ? (<Main
         isLoading={isLoading}
         loggedIn={loggedIn}
-      />
+        cards={cards}
+      />) : ''}
+      {location.pathname !== '/saved-news' ? <About /> : ''}
       <Footer />
 
       <LoginPopup
@@ -106,10 +149,13 @@ function App() {
         onRegister={handleRegisterPopupSubmit}
         onLoginClick={handleLoginClick}
       />
-      <SuccessMessagePopup
-        isOpen={isSuccessMessagePopupOpen}
-        onClose={handleSuccessMessagePopupClose}
+      <MessagePopup
+        isOpen={isMessagePopupOpen}
+        onClose={handleMessagePopupClose}
         onLoginClick={handleLoginClick}
+        name={messagePopupName}
+        title={messagePopupTitle}
+        content={messagePopupContent}
       />
     </>
   );
