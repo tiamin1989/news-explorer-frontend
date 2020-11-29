@@ -8,7 +8,7 @@ import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import MessagePopup from '../MessagePopup/MessagePopup';
 
-import connectNewsApi from '../../utils/utils';
+import { connectNewsApi, connectMainApi } from '../../utils/utils';
 
 import './App.css';
 
@@ -80,10 +80,6 @@ function App() {
     setLoginPopupOpen(true);
   }
 
-  function handleRegisterPopupSubmit() {
-
-  }
-
   function onUnLoginClick() {
     history.push('./');
     setLoggedIn(false);
@@ -114,6 +110,26 @@ function App() {
             или сервер недоступен. Подождите немного и попробуйте ещё раз
           </span>),
         });
+      });
+  }
+
+  function handleRegisterPopupSubmit({ name, email, password }) {
+    connectMainApi.register({
+      name,
+      email,
+      password,
+    })
+      .then(() => {
+        showMessage({
+          name: 'success',
+          title: 'Пользователь успешно зарегистрирован!',
+          content: (<span className="popup__offer popup__offer_left">
+            <a className="popup__offer-link" href="#" onClick={handleLoginClick}>Войти</a>
+          </span>),
+        });
+      })
+      .catch(() => {
+
       });
   }
 

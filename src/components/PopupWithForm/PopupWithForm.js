@@ -14,7 +14,6 @@ function PopupWithForm(
   },
 ) {
   function handlePopupClick(e) {
-    e.preventDefault();
     if (e.target === e.currentTarget) onClose();
   }
 

@@ -87,3 +87,7 @@
   text-decoration: none;
   color: #2F71E5;
 }
+
+.popup__offer-link:hover {
+  color: #6091e7;
+}
