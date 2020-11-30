@@ -7,13 +7,16 @@ import About from '../About/About';
 import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import MessagePopup from '../MessagePopup/MessagePopup';
+import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 import { connectNewsApi, connectMainApi } from '../../utils/utils';
 
 import './App.css';
 
 function App() {
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [currentUser, setCurrentUser] = React.useState({});
+
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isSearching, setIsSearching] = React.useState(false);
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
@@ -66,7 +69,15 @@ function App() {
     setMessagePopupOpen(false);
   }
 
-  function handleLoginPopupSubmit() {
+  function handleLoginPopupSubmit({ email, password }) {
+    connectMainApi.login({ email, password })
+      .then((res) => {
+        localStorage.setItem('jwt', res.token);
+        setCurrentUser(res);
+      })
+      .catch(() => {
+
+      });
     setLoginPopupOpen(false);
   }
 
@@ -102,6 +113,8 @@ function App() {
         setIsLoading(false);
       })
       .catch(() => {
+        setIsSearching(false);
+        setIsLoading(false);
         showMessage({
           name: 'failure',
           title: 'Произошла ошибка',
@@ -133,8 +146,28 @@ function App() {
       });
   }
 
+  React.useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      connectMainApi.authorize({ jwt })
+        .then((res) => {
+          setLoggedIn(true);
+          setCurrentUser(res);
+        })
+        .catch(() => {
+          showMessage({
+            name: 'failure',
+            title: 'Не удалось войти в учетную запись',
+            content: (<span className="popup__offer popup__offer_left">
+              К сожалению не удалось подключиться. Попробуйте войти снова
+            </span>),
+          });
+        });
+    }
+  }, []);
+
   return (
-    <>
+    <CurrentUserContext.Provider value={currentUser}>
       <Header
         loggedIn={loggedIn}
         onHamburgerClick={handleHamburgerClick}
@@ -173,7 +206,7 @@ function App() {
         title={messagePopupTitle}
         content={messagePopupContent}
       />
-    </>
+    </CurrentUserContext.Provider>
   );
 }
 

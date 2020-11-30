@@ -14,5 +14,5 @@ export const connectNewsApi = new NewsApi({
 });
 
 export const connectMainApi = new MainApi({
-  baseUrl: `https://api.diploma1989.students.nomoreparties.space`,
+  baseUrl: 'https://api.diploma1989.students.nomoreparties.space',
 });

@@ -12,10 +12,15 @@ function LoginPopup(
     onRegisterClick,
   },
 ) {
+  const emailRef = React.useRef(null);
+  const passwordRef = React.useRef(null);
+
   function handleSubmit(e) {
     e.preventDefault();
-    onLogin();
-    onClose();
+    onLogin({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
   }
 
   return (
@@ -27,6 +32,7 @@ function LoginPopup(
       onClose={onClose}>
       <label htmlFor="login-email" className="popup__label">Email</label>
       <input
+        ref={emailRef}
         id="login-email"
         name="login-email"
         type="email"
@@ -40,6 +46,7 @@ function LoginPopup(
       />
       <label htmlFor="login-password" className="popup__label">Пароль</label>
       <input
+        ref={passwordRef}
         id="login-password"
         name="login-password"
         type="password"

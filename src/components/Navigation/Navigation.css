@@ -142,7 +142,7 @@
 .header__nav-item-button_auth {
   padding: 11px 45px 13px 20px;
   background: url('../../images/auth.svg') no-repeat;
-  background-position: 85%;
+  background-position: 95%;
   transition: opacity .2s;
   text-decoration: none;
 }
@@ -155,7 +155,7 @@
 
 .header__nav-item-button_auth_white {
   background: url('../../images/auth_white.svg') no-repeat;
-  background-position: 85%;
+  background-position: 95%;
 }
 
 .header__nav-item-button_auth:hover {

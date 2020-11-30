@@ -42,6 +42,21 @@ class MainApi {
         return Promise.reject(new Error(res.message));
       });
   }
+
+  authorize({ jwt }) {
+    return fetch(`${this.baseUrl}/users/me`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(new Error(res.message));
+      });
+  }
 }
 
 export default MainApi;
