@@ -10,22 +10,19 @@ function NewsCardList({ loggedIn, cards, searchPage }) {
   const [cardList, setCardList] = React.useState([]);
   const location = useLocation();
 
-  function addCardsToList() {
-    const copy = JSON.parse(JSON.stringify(cardList));
-    copy.push(cards[cardIndex]);
-    copy.push(cards[cardIndex + 1]);
-    copy.push(cards[cardIndex + 2]);
-    setCardIndex(cardIndex + 3);
-    return copy;
-  }
-
   function showMore() {
-    setCardList(addCardsToList());
+    const nextCards = cards.slice(cardIndex, cardIndex + 3);
+    setCardList([...cardList, ...nextCards]);
+    setCardIndex(cardIndex + 3);
   }
 
   React.useEffect(() => {
-    setCardList(cards.slice(cardIndex, cardIndex + 3));
-    setCardIndex(cardIndex + 3);
+    if (searchPage) {
+      setCardList(cards.slice(cardIndex, cardIndex + 3));
+      setCardIndex(cardIndex + 3);
+    } else {
+      setCardList(cards);
+    }
   }, []);
 
   return (

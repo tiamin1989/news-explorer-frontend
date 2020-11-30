@@ -1,5 +1,10 @@
 import React from 'react';
-import { withRouter, useHistory, useLocation } from 'react-router-dom';
+import {
+  withRouter,
+  useHistory,
+  Switch,
+  Route,
+} from 'react-router-dom';
 import Header from '../Header/Header';
 import Footer from '../Footer/Footer';
 import Main from '../Main/Main';
@@ -30,9 +35,9 @@ function App() {
   const [messagePopupContent, setMessagePopupContent] = React.useState('');
 
   const [cards, setCards] = React.useState([]);
+  const [savedCards, setSavedCards] = React.useState([]);
 
   const history = useHistory();
-  const location = useLocation();
 
   function closeAllPopups() {
     setRegisterPopupOpen(false);
@@ -146,6 +151,10 @@ function App() {
       });
   }
 
+  function setSavedCardsF() {
+    setSavedCards([]);
+  }
+
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
@@ -178,12 +187,30 @@ function App() {
         onSearchSubmit={handleSearchSubmit}
         onError={showMessage}
       />
-      {isSearching ? (<Main
-        isLoading={isLoading}
-        loggedIn={loggedIn}
-        cards={cards}
-      />) : ''}
-      {location.pathname !== '/saved-news' ? <About /> : ''}
+
+      <Switch>
+        <Route path='/saved-news'>
+          {isSearching
+            ? (<Main
+              isLoading={isLoading}
+              loggedIn={loggedIn}
+              savedCards={savedCards}
+              f={setSavedCardsF}
+            />)
+            : ''}
+        </Route>
+        <Route path='/'>
+          {isSearching
+            ? (<Main
+              isLoading={isLoading}
+              loggedIn={loggedIn}
+              cards={cards}
+            />)
+            : ''}
+            <About />
+        </Route>
+      </Switch>
+
       <Footer />
 
       <LoginPopup

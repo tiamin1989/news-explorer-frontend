@@ -11,6 +11,7 @@ function SavedNews({ loggedIn }) {
       <SavedNewsHeader />
       <NewsCardList
         loggedIn={loggedIn}
+        searchPage={false}
       />
     </>
   );

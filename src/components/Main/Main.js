@@ -16,7 +16,8 @@ function Main({
 
   return (
     <main className="main">
-      {location.pathname === '/saved-news' ? <SavedNews loggedIn={loggedIn} /> : ''}
+      {location.pathname === '/saved-news' ? <SavedNews loggedIn={loggedIn} />
+        : ''}
       {isLoading
         ? <Preloader isLoading={isLoading} />
         : <NewsCardList
