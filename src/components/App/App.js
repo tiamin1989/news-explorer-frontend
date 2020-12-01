@@ -13,15 +13,15 @@ import LoginPopup from '../LoginPopup/LoginPopup';
 import RegisterPopup from '../RegisterPopup/RegisterPopup';
 import MessagePopup from '../MessagePopup/MessagePopup';
 import CurrentUserContext from '../../contexts/CurrentUserContext';
-
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { connectNewsApi, connectMainApi } from '../../utils/utils';
 
 import './App.css';
 
 function App() {
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
 
-  const [loggedIn, setLoggedIn] = React.useState(false);
   const [isLoading, setIsLoading] = React.useState(false);
   const [isSearching, setIsSearching] = React.useState(false);
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
@@ -48,7 +48,7 @@ function App() {
   function handleOnClick() {
     if (loggedIn) {
       localStorage.removeItem('jwt');
-      setLoggedIn(false);
+      setCurrentUser({});
     }
   }
 
@@ -98,7 +98,8 @@ function App() {
 
   function onUnLoginClick() {
     history.push('./');
-    setLoggedIn(false);
+    localStorage.removeItem('jwt');
+    setCurrentUser({});
   }
 
   function showMessage({ name, title, content }) {
@@ -160,7 +161,6 @@ function App() {
     if (jwt) {
       connectMainApi.authorize({ jwt })
         .then((res) => {
-          setLoggedIn(true);
           setCurrentUser(res);
         })
         .catch(() => {
@@ -175,8 +175,14 @@ function App() {
     }
   }, []);
 
+  React.useEffect(() => {
+    if (Object.keys(currentUser).length !== 0) setLoggedIn(true);
+    else setLoggedIn(false);
+  }, [currentUser]);
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
+
       <Header
         loggedIn={loggedIn}
         onHamburgerClick={handleHamburgerClick}
@@ -189,16 +195,17 @@ function App() {
       />
 
       <Switch>
-        <Route path='/saved-news'>
-          {isSearching
-            ? (<Main
-              isLoading={isLoading}
-              loggedIn={loggedIn}
-              savedCards={savedCards}
-              f={setSavedCardsF}
-            />)
-            : ''}
-        </Route>
+
+        <ProtectedRoute
+          exact path='/saved-news'
+          isSearching={isSearching}
+          loggedIn={loggedIn}
+          isLoading={isLoading}
+          savedCards={savedCards}
+          component={Main}
+          f={setSavedCardsF}
+        />
+
         <Route path='/'>
           {isSearching
             ? (<Main
@@ -207,8 +214,9 @@ function App() {
               cards={cards}
             />)
             : ''}
-            <About />
+          <About />
         </Route>
+
       </Switch>
 
       <Footer />

@@ -5,12 +5,13 @@ import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 import './SavedNews.css';
 
-function SavedNews({ loggedIn }) {
+function SavedNews({ loggedIn, cards }) {
   return (
     <>
       <SavedNewsHeader />
       <NewsCardList
         loggedIn={loggedIn}
+        cards={cards}
         searchPage={false}
       />
     </>
@@ -19,6 +20,7 @@ function SavedNews({ loggedIn }) {
 
 SavedNews.propTypes = {
   loggedIn: PropTypes.bool,
+  cards: PropTypes.array,
 };
 
 export default SavedNews;

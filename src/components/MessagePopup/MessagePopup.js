@@ -31,7 +31,7 @@ MessagePopup.propTypes = {
   onLoginClick: PropTypes.func,
   name: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
-  content: PropTypes.object.isRequired,
+  content: PropTypes.string.isRequired,
 };
 
 export default MessagePopup;

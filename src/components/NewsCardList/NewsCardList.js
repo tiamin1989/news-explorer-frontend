@@ -18,39 +18,41 @@ function NewsCardList({ loggedIn, cards, searchPage }) {
 
   React.useEffect(() => {
     if (searchPage) {
-      setCardList(cards.slice(cardIndex, cardIndex + 3));
+      setCardList(cards ? cards.slice(cardIndex, cardIndex + 3) : []);
       setCardIndex(cardIndex + 3);
     } else {
       setCardList(cards);
     }
   }, []);
 
-  return (
-    <section className="card-list">
-      {location.pathname !== '/saved-news' ? (<h2 className="card-list__title">Результаты поиска</h2>) : ''}
-      <ul className="card-list__news-cards">
-        {cardList.map((item, index) => (<NewsCard
-          key={index}
-          isLoggedIn={loggedIn}
-          cardCategory={'Рубрика'}
-          isAdded={true}
-          description={item.description}
-          publishedAt={item.publishedAt}
-          source={item.source}
-          title={item.title}
-          url={item.url}
-          urlToImage={item.urlToImage}
-          searchPage={searchPage}
-        />))}
-      </ul>
-      {location.pathname !== '/saved-news' && cards.length > 3 && (cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
-    </section>
-  );
+  if (cardList.length) {
+    return (
+      <section className="card-list">
+        {location.pathname !== '/saved-news' ? (<h2 className="card-list__title">Результаты поиска</h2>) : ''}
+        <ul className="card-list__news-cards">
+          {cardList.map((item, index) => (<NewsCard
+            key={index}
+            isLoggedIn={loggedIn}
+            cardCategory={'Рубрика'}
+            isAdded={true}
+            description={item.description}
+            publishedAt={item.publishedAt}
+            source={item.source}
+            title={item.title}
+            url={item.url}
+            urlToImage={item.urlToImage}
+            searchPage={searchPage}
+          />))}
+        </ul>
+        {location.pathname !== '/saved-news' && cards.length > 3 && (cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
+      </section>
+    );
+  } return (null);
 }
 
 NewsCardList.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  cards: PropTypes.array.isRequired,
+  cards: PropTypes.array,
   searchPage: PropTypes.bool.isRequired,
 };
 
