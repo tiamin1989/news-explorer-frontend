@@ -10,7 +10,7 @@ dateFrom.setDate(dateFrom.getDate() - 7);
 const formattedDateFrom = `${dateFrom.getFullYear()}-${dateFrom.getMonth() + 1}-${dateFrom.getDate()}`;
 
 export const connectNewsApi = new NewsApi({
-  baseUrl: `https://newsapi.org/v2/everything?apiKey=${apiKey}&from=${formattedDateFrom}&to=${formattedDateTo}&pageSize=100`,
+  baseUrl: `https://newsapi.org/v2/everything?language=ru&apiKey=${apiKey}&from=${formattedDateFrom}&to=${formattedDateTo}&pageSize=100`,
 });
 
 export const connectMainApi = new MainApi({

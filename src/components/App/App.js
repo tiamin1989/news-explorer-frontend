@@ -130,7 +130,6 @@ function App() {
   }
 
   function handleSearchSubmit(query) {
-    console.log('query', query);
     setKeyword(query);
     setIsSearching(true);
     setIsLoading(true);
@@ -238,13 +237,12 @@ function App() {
         />
 
         <Route path='/'>
-          {isSearching
-            ? <Main
-              isLoading={isLoading}
-              loggedIn={loggedIn}
-              cards={cards}
-            />
-            : ''}
+          <Main
+            isLoading={isLoading}
+            loggedIn={loggedIn}
+            cards={cards}
+            keyword={keyword}
+          />
           <About />
         </Route>
 

@@ -37,7 +37,7 @@ Main.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   cards: PropTypes.array,
   savedCards: PropTypes.array,
-  keyword: PropTypes.string,
+  keyword: PropTypes.string.isRequire,
 };
 
 export default Main;

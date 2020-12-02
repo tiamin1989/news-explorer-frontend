@@ -41,7 +41,7 @@ function NewsCardList({
             urlToImage={item.urlToImage}
           />))}
         </ul>
-        {cards.length > 3 && (cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
+        {(cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
       </section>
     );
   } return (null);
@@ -49,7 +49,7 @@ function NewsCardList({
 
 NewsCardList.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  cards: PropTypes.array.isRequired,
+  cards: PropTypes.array,
   keyword: PropTypes.string.isRequire,
 };
 
