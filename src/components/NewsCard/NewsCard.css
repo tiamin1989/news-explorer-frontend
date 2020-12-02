@@ -48,7 +48,6 @@
 
 .card-list__card-added:focus {
   outline: none;
-  background: url('../../images/pocket-added.svg');
 }
 
 .card-list__card-added_added {
@@ -77,6 +76,7 @@
 }
 
 .card-list__card-message {
+  padding: 0 12px 0;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +86,6 @@
   position: absolute;
   top: 24px;
   right: 85px;
-  width: 182px;
   height: 40px;
   visibility: hidden;
   opacity: 0;

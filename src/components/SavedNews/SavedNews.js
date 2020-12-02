@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SavedNewsCardList from '../NewsCardList/NewsCardList';
+import SavedNewsCardList from '../SavedNewsCardList/SavedNewsCardList';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 import './SavedNews.css';
 
-function SavedNews({ loggedIn, cards }) {
+function SavedNews({ loggedIn, savedCards }) {
   return (
     <>
-      <SavedNewsHeader cards={cards} />
+      <SavedNewsHeader savedCards={savedCards} />
       <SavedNewsCardList
         loggedIn={loggedIn}
-        cards={cards}
+        savedCards={savedCards}
       />
     </>
   );
 }
 
 SavedNews.propTypes = {
-  loggedIn: PropTypes.bool,
-  cards: PropTypes.array,
+  loggedIn: PropTypes.bool.isRequired,
+  savedCards: PropTypes.array,
 };
 
 export default SavedNews;

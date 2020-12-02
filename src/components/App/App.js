@@ -23,7 +23,7 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   const [isLoading, setIsLoading] = React.useState(false);
-  const [isSearching, setIsSearching] = React.useState(false);
+  /*   const [isSearching, setIsSearching] = React.useState(false); */
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
   const [isLoginPopupOpen, setLoginPopupOpen] = React.useState(false);
@@ -36,7 +36,7 @@ function App() {
 
   const [cards, setCards] = React.useState([]);
   const [savedCards, setSavedCards] = React.useState([]);
-  const [keyword, setKeyword] = React.useState('');
+  const [keywordState, setKeywordState] = React.useState('keyword');
 
   const history = useHistory();
 
@@ -113,6 +113,24 @@ function App() {
     setLoginPopupOpen(false);
   }
 
+  function onSaveCard(card) {
+    const jwt = localStorage.getItem('jwt');
+    console.log('Сохранение карточки');
+    connectMainApi.saveArticle({ jwt, card })
+      .then((res) => {
+        setSavedCards([...savedCards, res]);
+      })
+      .catch(() => {
+        showMessage({
+          name: 'failure',
+          title: 'Не удалось сохранить карточку',
+          content: (<span className="popup__offer popup__offer_left">
+            Не удалось сохранить карточку, попробуйте позднее
+          </span>),
+        });
+      });
+  }
+
   function handleRegisterClick() {
     setLoginPopupOpen(false);
     setRegisterPopupOpen(true);
@@ -130,16 +148,28 @@ function App() {
   }
 
   function handleSearchSubmit(query) {
-    setKeyword(query);
-    setIsSearching(true);
+    setKeywordState(query);
+    /* setIsSearching(true); */
     setIsLoading(true);
     connectNewsApi.getNews(query)
       .then((res) => {
-        setCards(res.articles);
+        const transformed = [];
+        res.articles.forEach((obj) => {
+          transformed.push({
+            date: obj.publishedAt,
+            keyword: keywordState,
+            title: obj.title,
+            text: obj.description,
+            source: obj.source.name,
+            link: obj.url,
+            image: obj.urlToImage,
+          });
+        });
+        setCards(transformed);
         setIsLoading(false);
       })
       .catch(() => {
-        setIsSearching(false);
+        /* setIsSearching(false); */
         setIsLoading(false);
         showMessage({
           name: 'failure',
@@ -179,11 +209,9 @@ function App() {
   }
 
   function setSavedCardsF() {
-    setSavedCards([]);
-
     /* удалить потом */
-    setKeyword('Keyword');
-    console.log(keyword);
+    setKeywordState('Keyword');
+    console.log(keywordState);
   }
 
   React.useEffect(() => {
@@ -206,8 +234,21 @@ function App() {
   }, []);
 
   React.useEffect(() => {
-    if (Object.keys(currentUser).length !== 0) setLoggedIn(true);
-    else setLoggedIn(false);
+    const jwt = localStorage.getItem('jwt');
+    if (Object.keys(currentUser).length !== 0) {
+      setLoggedIn(true);
+      connectMainApi.getArticles({ jwt })
+        .then((res) => {
+          setSavedCards(res);
+        })
+        .catch(() => {
+          console.log('Ошибка устаноки стейта сохраненных карточек');
+        });
+    } else {
+      setLoggedIn(false);
+      setCards([]);
+      setSavedCards([]);
+    }
   }, [currentUser]);
 
   return (
@@ -228,7 +269,6 @@ function App() {
 
         <ProtectedRoute
           exact path='/saved-news'
-          isSearching={isSearching}
           loggedIn={loggedIn}
           isLoading={isLoading}
           savedCards={savedCards}
@@ -241,7 +281,8 @@ function App() {
             isLoading={isLoading}
             loggedIn={loggedIn}
             cards={cards}
-            keyword={keyword}
+            savedCards={savedCards}
+            onSaveCard={onSaveCard}
           />
           <About />
         </Route>

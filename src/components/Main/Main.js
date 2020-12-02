@@ -14,18 +14,22 @@ function Main({
   isLoading,
   savedCards,
   cards,
-  keyword,
+  onSaveCard,
 }) {
   return (
     <main className="main">
       <Route path='/saved-news'>
-        <SavedNews loggedIn={loggedIn} cards={savedCards} />
+        <SavedNews loggedIn={loggedIn} savedCards={savedCards} />
       </Route>
       <Route path='/'>
         {
           isLoading
             ? <Preloader isLoading={isLoading} />
-            : <NewsCardList loggedIn={loggedIn} cards={cards} keyword={keyword} />
+            : <NewsCardList
+              loggedIn={loggedIn}
+              cards={cards}
+              savedCards={savedCards}
+              onSaveCard={onSaveCard} />
         }
       </Route>
     </main>
@@ -37,7 +41,7 @@ Main.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   cards: PropTypes.array,
   savedCards: PropTypes.array,
-  keyword: PropTypes.string.isRequire,
+  onSaveCard: PropTypes.func.isRequired,
 };
 
 export default Main;

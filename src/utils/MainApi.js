@@ -57,6 +57,38 @@ class MainApi {
         return Promise.reject(new Error(res.message));
       });
   }
+
+  getArticles({ jwt }) {
+    return fetch(`${this.baseUrl}/articles`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(new Error(res.message));
+      });
+  }
+
+  saveArticle({ jwt, card }) {
+    return fetch(`${this.baseUrl}/articles`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${jwt}`,
+      },
+      body: JSON.stringify(card),
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(new Error(res.message));
+      });
+  }
 }
 
 export default MainApi;

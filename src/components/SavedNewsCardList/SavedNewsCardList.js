@@ -5,13 +5,13 @@ import SavedNewsCard from '../SavedNewsCard/SavedNewsCard';
 import './SavedNewsCardList.css';
 
 function SavedNewsCardList({
-  cards,
+  savedCards,
 }) {
-
+  console.log('savedCards', savedCards);
   return (
     <section className="card-list">
       <ul className="card-list__news-cards">
-        {cards.map((item, index) => (<SavedNewsCard
+        {savedCards.map((item, index) => (<SavedNewsCard
           key={index}
           keyword={item.keyword}
           text={item.text}
@@ -27,7 +27,7 @@ function SavedNewsCardList({
 }
 
 SavedNewsCardList.propTypes = {
-  cards: PropTypes.array.isRequired,
+  savedCards: PropTypes.array.isRequired,
 };
 
 export default SavedNewsCardList;

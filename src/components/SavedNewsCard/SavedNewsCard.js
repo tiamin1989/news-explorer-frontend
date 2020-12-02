@@ -12,7 +12,7 @@ function SavedNewsCard({
   image,
 }) {
   const message = React.useRef(null);
-
+  console.log('keyword', keyword);
   function showMessage(e) {
     if (e.target === e.currentTarget) {
       e.target.classList.add('card-list__card-added_active');
@@ -28,16 +28,16 @@ function SavedNewsCard({
   }
 
   function onCardClick() {
-    window.open(link, "_blank");
+    window.open(link, '_blank');
   }
 
   return (
-    <li className="card-list__news-card" onClick={onCardClick}>
+    <li className="card-list__news-card">
       <span className="card-list__card-category">{keyword}</span>
-      <img src={image} alt="Изображение новости" className="card-list__card-image" />
+      <img src={image} alt="Изображение новости" className="card-list__card-image" onClick={onCardClick} />
       <button className="card-list__card-added card-list__card-added_delete" onMouseEnter={showMessage} onMouseLeave={hideMessage} />
       <span ref={message} className="card-list__card-message card-list__card-message_big">Убрать из сохранённых</span>
-      <div className="card-list__wrapper">
+      <div className="card-list__wrapper" onClick={onCardClick}>
         <span className="card-list__card-date">{date}</span>
         <h2 className="card-list__card-title">{title}</h2>
         <p className="card-list__card-text">{text}</p>
@@ -49,13 +49,12 @@ function SavedNewsCard({
 
 SavedNewsCard.propTypes = {
   keyword: PropTypes.string.isRequired,
-  text: PropTypes.string.isRequired,
-  date: PropTypes.date.isRequired,
-  source: PropTypes.string.isRequired,
-  title: PropTypes.string.isRequired,
-  source: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   image: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default SavedNewsCard;

@@ -7,7 +7,8 @@ import './NewsCardList.css';
 function NewsCardList({
   loggedIn,
   cards,
-  keyword,
+  savedCards,
+  onSaveCard,
 }) {
   const [cardIndex, setCardIndex] = React.useState(0);
   const [cardList, setCardList] = React.useState([]);
@@ -16,6 +17,10 @@ function NewsCardList({
     const nextCards = cards.slice(cardIndex, cardIndex + 3);
     setCardList([...cardList, ...nextCards]);
     setCardIndex(cardIndex + 3);
+  }
+
+  function checkIsAdded(url) {
+    return !!savedCards.find((card) => card.link === url);
   }
 
   React.useEffect(() => {
@@ -31,14 +36,15 @@ function NewsCardList({
           {cardList.map((item, index) => (<NewsCard
             key={index}
             isLoggedIn={loggedIn}
-            isAdded={true}
-            keyword={keyword}
-            description={item.description}
-            publishedAt={item.publishedAt}
-            source={item.source.name}
+            isAdded={checkIsAdded(item.link)}
+            onSaveCard={onSaveCard}
+            keyword={item.keyword}
+            text={item.text}
+            date={item.date}
+            source={item.source}
             title={item.title}
-            url={item.url}
-            urlToImage={item.urlToImage}
+            link={item.link}
+            image={item.image}
           />))}
         </ul>
         {(cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
@@ -49,8 +55,9 @@ function NewsCardList({
 
 NewsCardList.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  cards: PropTypes.array,
-  keyword: PropTypes.string.isRequire,
+  cards: PropTypes.array.isRequired,
+  savedCards: PropTypes.array.isRequired,
+  onSaveCard: PropTypes.func.isRequired,
 };
 
 export default NewsCardList;
