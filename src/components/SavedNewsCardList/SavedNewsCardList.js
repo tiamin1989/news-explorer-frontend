@@ -7,7 +7,6 @@ import './SavedNewsCardList.css';
 function SavedNewsCardList({
   savedCards,
 }) {
-  console.log('savedCards', savedCards);
   return (
     <section className="card-list">
       <ul className="card-list__news-cards">

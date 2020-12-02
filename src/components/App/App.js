@@ -23,7 +23,6 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
 
   const [isLoading, setIsLoading] = React.useState(false);
-  /*   const [isSearching, setIsSearching] = React.useState(false); */
   const [isHamburgerActive, setIsHamburgerActive] = React.useState(false);
 
   const [isLoginPopupOpen, setLoginPopupOpen] = React.useState(false);
@@ -115,7 +114,7 @@ function App() {
 
   function onSaveCard(card) {
     const jwt = localStorage.getItem('jwt');
-    console.log('Сохранение карточки');
+
     connectMainApi.saveArticle({ jwt, card })
       .then((res) => {
         setSavedCards([...savedCards, res]);
@@ -149,7 +148,6 @@ function App() {
 
   function handleSearchSubmit(query) {
     setKeywordState(query);
-    /* setIsSearching(true); */
     setIsLoading(true);
     connectNewsApi.getNews(query)
       .then((res) => {
@@ -169,7 +167,6 @@ function App() {
         setIsLoading(false);
       })
       .catch(() => {
-        /* setIsSearching(false); */
         setIsLoading(false);
         showMessage({
           name: 'failure',
@@ -206,12 +203,6 @@ function App() {
           </span>),
         });
       });
-  }
-
-  function setSavedCardsF() {
-    /* удалить потом */
-    setKeywordState('Keyword');
-    console.log(keywordState);
   }
 
   React.useEffect(() => {
@@ -273,7 +264,6 @@ function App() {
           isLoading={isLoading}
           savedCards={savedCards}
           component={Main}
-          f={setSavedCardsF}
         />
 
         <Route path='/'>

@@ -12,7 +12,7 @@ function SavedNewsCard({
   image,
 }) {
   const message = React.useRef(null);
-  console.log('keyword', keyword);
+
   function showMessage(e) {
     if (e.target === e.currentTarget) {
       e.target.classList.add('card-list__card-added_active');

@@ -41,7 +41,7 @@ Main.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   cards: PropTypes.array,
   savedCards: PropTypes.array,
-  onSaveCard: PropTypes.func.isRequired,
+  onSaveCard: PropTypes.func,
 };
 
 export default Main;

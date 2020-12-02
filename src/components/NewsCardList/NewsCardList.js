@@ -55,9 +55,9 @@ function NewsCardList({
 
 NewsCardList.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  cards: PropTypes.array.isRequired,
-  savedCards: PropTypes.array.isRequired,
-  onSaveCard: PropTypes.func.isRequired,
+  cards: PropTypes.array,
+  savedCards: PropTypes.array,
+  onSaveCard: PropTypes.func,
 };
 
 export default NewsCardList;
