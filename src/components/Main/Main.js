@@ -14,6 +14,7 @@ function Main({
   isLoading,
   savedCards,
   cards,
+  keyword,
 }) {
   return (
     <main className="main">
@@ -24,7 +25,7 @@ function Main({
         {
           isLoading
             ? <Preloader isLoading={isLoading} />
-            : <NewsCardList loggedIn={loggedIn} cards={cards} searchPage={true} />
+            : <NewsCardList loggedIn={loggedIn} cards={cards} keyword={keyword} />
         }
       </Route>
     </main>
@@ -36,6 +37,7 @@ Main.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   cards: PropTypes.array,
   savedCards: PropTypes.array,
+  keyword: PropTypes.string,
 };
 
 export default Main;

@@ -5,14 +5,13 @@ import PropTypes from 'prop-types';
 function NewsCard({
   isLoggedIn,
   isAdded,
-  cardCategory,
-  urlToImage,
-  /* url, */
-  title,
-  /*   source, */
-  publishedAt,
+  keyword,
   description,
-  searchPage,
+  publishedAt,
+  source,
+  title,
+  url,
+  urlToImage,
 }) {
   const message = React.useRef(null);
 
@@ -30,23 +29,24 @@ function NewsCard({
     }
   }
 
+  function saveCard() {
+    console.log(keyword);
+  }
+
+  function onCardClick() {
+    window.open(url, '_blank');
+
+    /* удалить потом */
+    saveCard();
+  }
+
   return (
-    <li className="card-list__news-card">
-      {
-        !searchPage ? (
-          <>
-            <span className="card-list__card-category">{cardCategory}</span>
-          </>
-        ) : ''
-      }
+    <li className="card-list__news-card" onClick={onCardClick}>
       <img src={urlToImage} alt="Изображение новости" className="card-list__card-image" />
       {
         isLoggedIn ? (
           <>
-            {searchPage
-              ? <button className={`card-list__card-added${isAdded ? ' card-list__card-added_added' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
-              : <button className={`card-list__card-added${isAdded ? ' card-list__card-added_delete' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
-            }
+            <button className={`card-list__card-added${isAdded ? ' card-list__card-added_added' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
             <span ref={message} className="card-list__card-message card-list__card-message_big">Убрать из сохранённых</span>
           </>
         ) : (
@@ -60,7 +60,7 @@ function NewsCard({
         <span className="card-list__card-date">{publishedAt}</span>
         <h2 className="card-list__card-title">{title}</h2>
         <p className="card-list__card-text">{description}</p>
-        <span className="card-list__card-source">{/* source.name */}</span>
+        <span className="card-list__card-source">{source}</span>
       </div>
     </li>
   );
@@ -68,14 +68,14 @@ function NewsCard({
 
 NewsCard.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  isAdded: PropTypes.bool,
-  cardCategory: PropTypes.string,
-  /* url: PropTypes.url, */
-  urlToImage: PropTypes.string,
-  title: PropTypes.string,
-  source: PropTypes.object,
-  publishedAt: PropTypes.string,
-  description: PropTypes.string,
+  isAdded: PropTypes.bool.isRequired,
+  keyword: PropTypes.string.isRequired,
+  url: PropTypes.string.isRequired,
+  urlToImage: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+  publishedAt: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
   searchPage: PropTypes.bool.isRequired,
 };
 

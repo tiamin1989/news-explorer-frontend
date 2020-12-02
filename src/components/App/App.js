@@ -36,6 +36,7 @@ function App() {
 
   const [cards, setCards] = React.useState([]);
   const [savedCards, setSavedCards] = React.useState([]);
+  const [keyword, setKeyword] = React.useState('');
 
   const history = useHistory();
 
@@ -74,14 +75,40 @@ function App() {
     setMessagePopupOpen(false);
   }
 
+  function showMessage({ name, title, content }) {
+    closeAllPopups();
+    setMessagePopupName(name);
+    setMessagePopupTitle(title);
+    setMessagePopupContent(content);
+    setMessagePopupOpen(true);
+  }
+
   function handleLoginPopupSubmit({ email, password }) {
     connectMainApi.login({ email, password })
       .then((res) => {
         localStorage.setItem('jwt', res.token);
-        setCurrentUser(res);
+        connectMainApi.authorize({ jwt: res.token })
+          .then((user) => {
+            setCurrentUser(user);
+          })
+          .catch(() => {
+            showMessage({
+              name: 'failure',
+              title: 'Не удалось войти в учетную запись',
+              content: (<span className="popup__offer popup__offer_left">
+                Попробуйте повторно авторизоваться
+              </span>),
+            });
+          });
       })
       .catch(() => {
-
+        showMessage({
+          name: 'failure',
+          title: 'Не удалось войти в учетную запись',
+          content: (<span className="popup__offer popup__offer_left">
+            Убедитесь, что вносите верные данные для авторизации
+          </span>),
+        });
       });
     setLoginPopupOpen(false);
   }
@@ -102,15 +129,9 @@ function App() {
     setCurrentUser({});
   }
 
-  function showMessage({ name, title, content }) {
-    closeAllPopups();
-    setMessagePopupName(name);
-    setMessagePopupTitle(title);
-    setMessagePopupContent(content);
-    setMessagePopupOpen(true);
-  }
-
   function handleSearchSubmit(query) {
+    console.log('query', query);
+    setKeyword(query);
     setIsSearching(true);
     setIsLoading(true);
     connectNewsApi.getNews(query)
@@ -148,12 +169,22 @@ function App() {
         });
       })
       .catch(() => {
-
+        showMessage({
+          name: 'failure',
+          title: 'Произошла ошибка при регистрации',
+          content: (<span className="popup__offer popup__offer_left">
+            Попробуйте зарегистрироваться позже
+          </span>),
+        });
       });
   }
 
   function setSavedCardsF() {
     setSavedCards([]);
+
+    /* удалить потом */
+    setKeyword('Keyword');
+    console.log(keyword);
   }
 
   React.useEffect(() => {
@@ -168,7 +199,7 @@ function App() {
             name: 'failure',
             title: 'Не удалось войти в учетную запись',
             content: (<span className="popup__offer popup__offer_left">
-              К сожалению не удалось подключиться. Попробуйте войти снова
+              Попробуйте почистить кэш в браузере и повторить попытку
             </span>),
           });
         });
@@ -208,11 +239,11 @@ function App() {
 
         <Route path='/'>
           {isSearching
-            ? (<Main
+            ? <Main
               isLoading={isLoading}
               loggedIn={loggedIn}
               cards={cards}
-            />)
+            />
             : ''}
           <About />
         </Route>

@@ -1,14 +1,16 @@
 import React from 'react';
-import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NewsCard from '../NewsCard/NewsCard';
 
 import './NewsCardList.css';
 
-function NewsCardList({ loggedIn, cards, searchPage }) {
+function NewsCardList({
+  loggedIn,
+  cards,
+  keyword,
+}) {
   const [cardIndex, setCardIndex] = React.useState(0);
   const [cardList, setCardList] = React.useState([]);
-  const location = useLocation();
 
   function showMore() {
     const nextCards = cards.slice(cardIndex, cardIndex + 3);
@@ -17,34 +19,29 @@ function NewsCardList({ loggedIn, cards, searchPage }) {
   }
 
   React.useEffect(() => {
-    if (searchPage) {
-      setCardList(cards ? cards.slice(cardIndex, cardIndex + 3) : []);
-      setCardIndex(cardIndex + 3);
-    } else {
-      setCardList(cards);
-    }
+    setCardList(cards ? cards.slice(cardIndex, cardIndex + 3) : []);
+    setCardIndex(cardIndex + 3);
   }, []);
 
   if (cardList.length) {
     return (
       <section className="card-list">
-        {location.pathname !== '/saved-news' ? (<h2 className="card-list__title">Результаты поиска</h2>) : ''}
+        <h2 className="card-list__title">Результаты поиска</h2>
         <ul className="card-list__news-cards">
           {cardList.map((item, index) => (<NewsCard
             key={index}
             isLoggedIn={loggedIn}
-            cardCategory={'Рубрика'}
             isAdded={true}
+            keyword={keyword}
             description={item.description}
             publishedAt={item.publishedAt}
-            source={item.source}
+            source={item.source.name}
             title={item.title}
             url={item.url}
             urlToImage={item.urlToImage}
-            searchPage={searchPage}
           />))}
         </ul>
-        {location.pathname !== '/saved-news' && cards.length > 3 && (cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
+        {cards.length > 3 && (cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
       </section>
     );
   } return (null);
@@ -52,8 +49,8 @@ function NewsCardList({ loggedIn, cards, searchPage }) {
 
 NewsCardList.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
-  cards: PropTypes.array,
-  searchPage: PropTypes.bool.isRequired,
+  cards: PropTypes.array.isRequired,
+  keyword: PropTypes.string.isRequire,
 };
 
 export default NewsCardList;
