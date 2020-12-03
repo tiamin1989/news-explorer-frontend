@@ -8,6 +8,7 @@ function NewsCard({
   isLoggedIn,
   isAdded,
   onSaveCard,
+  onDeleteCard,
   keyword,
   text,
   date,
@@ -45,7 +46,7 @@ function NewsCard({
   }
 
   function deleteCard() {
-    console.log(keyword);
+    onDeleteCard(isAdded._id);
   }
 
   function onCardClick() {
@@ -77,8 +78,8 @@ function NewsCard({
       {
         isLoggedIn ? (
           <>
-            <button className={`card-list__card-added${isAdded ? ' card-list__card-added_added' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} onClick={isAdded ? deleteCard : saveCard} />
-            <span ref={message} className="card-list__card-message card-list__card-message_big">{isAdded ? 'Убрать из сохранённых' : 'Сохранить'}</span>
+            <button className={`card-list__card-added${isAdded.isAdded ? ' card-list__card-added_added' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} onClick={isAdded.isAdded ? deleteCard : saveCard} />
+            <span ref={message} className="card-list__card-message card-list__card-message_big">{isAdded.isAdded ? 'Убрать из сохранённых' : 'Сохранить'}</span>
           </>
         ) : (
             <>
@@ -99,8 +100,9 @@ function NewsCard({
 
 NewsCard.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  isAdded: PropTypes.bool.isRequired,
+  isAdded: PropTypes.object.isRequired,
   onSaveCard: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
   keyword: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   image: PropTypes.string,

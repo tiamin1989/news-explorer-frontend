@@ -3,6 +3,8 @@ import './SavedNewsCard.css';
 import PropTypes from 'prop-types';
 
 function SavedNewsCard({
+  isAdded,
+  onDeleteCard,
   keyword,
   text,
   date,
@@ -27,6 +29,10 @@ function SavedNewsCard({
     }
   }
 
+  function deleteCard() {
+    onDeleteCard(isAdded.id);
+  }
+
   function onCardClick() {
     window.open(link, '_blank');
   }
@@ -35,7 +41,7 @@ function SavedNewsCard({
     <li className="card-list__news-card">
       <span className="card-list__card-category">{keyword}</span>
       <img src={image} alt="Изображение новости" className="card-list__card-image" onClick={onCardClick} />
-      <button className="card-list__card-added card-list__card-added_delete" onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+      <button className="card-list__card-added card-list__card-added_delete" onMouseEnter={showMessage} onMouseLeave={hideMessage} onClick={deleteCard} />
       <span ref={message} className="card-list__card-message card-list__card-message_big">Убрать из сохранённых</span>
       <div className="card-list__wrapper" onClick={onCardClick}>
         <span className="card-list__card-date">{date}</span>
@@ -48,6 +54,8 @@ function SavedNewsCard({
 }
 
 SavedNewsCard.propTypes = {
+  isAdded: PropTypes.object.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
   keyword: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   image: PropTypes.string,
@@ -55,6 +63,7 @@ SavedNewsCard.propTypes = {
   source: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
 };
 
 export default SavedNewsCard;

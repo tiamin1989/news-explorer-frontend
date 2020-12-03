@@ -15,6 +15,7 @@ function Main({
   savedCards,
   cards,
   onSaveCard,
+  onDeleteCard,
 }) {
   return (
     <main className="main">
@@ -29,7 +30,8 @@ function Main({
               loggedIn={loggedIn}
               cards={cards}
               savedCards={savedCards}
-              onSaveCard={onSaveCard} />
+              onSaveCard={onSaveCard}
+              onDeleteCard={onDeleteCard} />
         }
       </Route>
     </main>
@@ -42,6 +44,7 @@ Main.propTypes = {
   cards: PropTypes.array,
   savedCards: PropTypes.array,
   onSaveCard: PropTypes.func,
+  onDeleteCard: PropTypes.func,
 };
 
 export default Main;

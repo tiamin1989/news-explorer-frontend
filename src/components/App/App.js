@@ -35,7 +35,6 @@ function App() {
 
   const [cards, setCards] = React.useState([]);
   const [savedCards, setSavedCards] = React.useState([]);
-  const [keywordState, setKeywordState] = React.useState('keyword');
 
   const history = useHistory();
 
@@ -112,7 +111,7 @@ function App() {
     setLoginPopupOpen(false);
   }
 
-  function onSaveCard(card) {
+  function handleSaveCard(card) {
     const jwt = localStorage.getItem('jwt');
 
     connectMainApi.saveArticle({ jwt, card })
@@ -127,6 +126,18 @@ function App() {
             Не удалось сохранить карточку, попробуйте позднее
           </span>),
         });
+      });
+  }
+
+  function handleDeleteCard(cardId) {
+    const jwt = localStorage.getItem('jwt');
+
+    connectMainApi.deleteArticle({ jwt, cardId })
+      .then(() => {
+        setSavedCards(savedCards.filter((obj) => obj._id !== cardId));
+      })
+      .catch(() => {
+
       });
   }
 
@@ -147,7 +158,6 @@ function App() {
   }
 
   function handleSearchSubmit(query) {
-    setKeywordState(query);
     setIsLoading(true);
     connectNewsApi.getNews(query)
       .then((res) => {
@@ -155,7 +165,7 @@ function App() {
         res.articles.forEach((obj) => {
           transformed.push({
             date: obj.publishedAt,
-            keyword: keywordState,
+            keyword: query,
             title: obj.title,
             text: obj.description,
             source: obj.source.name,
@@ -263,6 +273,7 @@ function App() {
           loggedIn={loggedIn}
           isLoading={isLoading}
           savedCards={savedCards}
+          onDeleteCard={handleDeleteCard}
           component={Main}
         />
 
@@ -272,7 +283,8 @@ function App() {
             loggedIn={loggedIn}
             cards={cards}
             savedCards={savedCards}
-            onSaveCard={onSaveCard}
+            onSaveCard={handleSaveCard}
+            onDeleteCard={handleDeleteCard}
           />
           <About />
         </Route>

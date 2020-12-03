@@ -9,6 +9,7 @@ function NewsCardList({
   cards,
   savedCards,
   onSaveCard,
+  onDeleteCard,
 }) {
   const [cardIndex, setCardIndex] = React.useState(0);
   const [cardList, setCardList] = React.useState([]);
@@ -19,8 +20,12 @@ function NewsCardList({
     setCardIndex(cardIndex + 3);
   }
 
-  function checkIsAdded(url) {
-    return !!savedCards.find((card) => card.link === url);
+  function checkIsAdded(link) {
+    const foundedCard = savedCards.find((card) => card.link === link);
+    return {
+      _id: foundedCard ? foundedCard._id : '',
+      isAdded: !!foundedCard,
+    };
   }
 
   React.useEffect(() => {
@@ -38,6 +43,8 @@ function NewsCardList({
             isLoggedIn={loggedIn}
             isAdded={checkIsAdded(item.link)}
             onSaveCard={onSaveCard}
+            onDeleteCard={onDeleteCard}
+            checkIsAdded={checkIsAdded}
             keyword={item.keyword}
             text={item.text}
             date={item.date}
@@ -58,6 +65,7 @@ NewsCardList.propTypes = {
   cards: PropTypes.array,
   savedCards: PropTypes.array,
   onSaveCard: PropTypes.func,
+  onDeleteCard: PropTypes.func.isRequired,
 };
 
 export default NewsCardList;
