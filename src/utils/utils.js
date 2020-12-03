@@ -8,9 +8,9 @@ const formattedDateTo = `${dateTo.getFullYear()}-${dateTo.getMonth() + 1}-${date
 const dateFrom = new Date();
 dateFrom.setDate(dateFrom.getDate() - 7);
 const formattedDateFrom = `${dateFrom.getFullYear()}-${dateFrom.getMonth() + 1}-${dateFrom.getDate()}`;
-
+/* https://nomoreparties.co/news/v2/top-headlines?country=us&apiKey=[ваш_ключ] */
 export const connectNewsApi = new NewsApi({
-  baseUrl: `https://newsapi.org/v2/everything?language=ru&apiKey=${apiKey}&from=${formattedDateFrom}&to=${formattedDateTo}&pageSize=100`,
+  baseUrl: `https://nomoreparties.co/news/v2/everything?language=ru&apiKey=${apiKey}&from=${formattedDateFrom}&to=${formattedDateTo}&pageSize=100`,
 });
 console.log(formattedDateFrom);
 export const connectMainApi = new MainApi({

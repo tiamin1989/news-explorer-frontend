@@ -28,6 +28,10 @@ function NewsCardList({
     };
   }
 
+  function truncString(max, str) {
+    return `${str.slice(0, max - 3)}...`;
+  }
+
   React.useEffect(() => {
     setCardList(cards ? cards.slice(cardIndex, cardIndex + 3) : []);
     setCardIndex(cardIndex + 3);
@@ -45,11 +49,11 @@ function NewsCardList({
             onSaveCard={onSaveCard}
             onDeleteCard={onDeleteCard}
             checkIsAdded={checkIsAdded}
-            keyword={item.keyword}
-            text={item.text}
+            keyword={truncString(30, item.keyword)}
+            text={item.text.replace(/<[^>]+>/g, '')}
             date={item.date}
             source={item.source}
-            title={item.title}
+            title={truncString(70, item.title)}
             link={item.link}
             image={item.image}
           />))}

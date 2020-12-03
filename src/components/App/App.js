@@ -118,12 +118,12 @@ function App() {
       .then((res) => {
         setSavedCards([...savedCards, res]);
       })
-      .catch(() => {
+      .catch((err) => {
         showMessage({
           name: 'failure',
-          title: 'Не удалось сохранить карточку',
+          title: `Ошибка ${err.status}`,
           content: (<span className="popup__offer popup__offer_left">
-            Не удалось сохранить карточку, попробуйте позднее
+            {err.statusText}
           </span>),
         });
       });
@@ -136,8 +136,15 @@ function App() {
       .then(() => {
         setSavedCards(savedCards.filter((obj) => obj._id !== cardId));
       })
-      .catch(() => {
-
+      .catch((err) => {
+        console.log(err);
+        showMessage({
+          name: 'failure',
+          title: `Ошибка ${err.status}`,
+          content: (<span className="popup__offer popup__offer_left">
+            {err.statusText}
+          </span>),
+        });
       });
   }
 
@@ -176,7 +183,8 @@ function App() {
         setCards(transformed);
         setIsLoading(false);
       })
-      .catch(() => {
+      .catch((err) => {
+        console.log(err);
         setIsLoading(false);
         showMessage({
           name: 'failure',

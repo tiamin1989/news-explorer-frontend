@@ -86,7 +86,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(new Error(res.message));
+        return Promise.reject(res);
       });
   }
 
@@ -105,7 +105,7 @@ class MainApi {
         if (res.ok) {
           return res.json();
         }
-        return Promise.reject(new Error(res.message));
+        return Promise.reject(res);
       });
   }
 }
