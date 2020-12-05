@@ -17,10 +17,51 @@ function Main({
   onSaveCard,
   onDeleteCard,
 }) {
+  function getKeywordsQuantityObj() {
+    /* eslint-disable */
+    const keywordsCount = {};
+    let max = [0, ''];
+    let maxSecond = [0, ''];
+    let savedCardToEdit = JSON.parse(JSON.stringify(savedCards));
+
+    function getMaxValues(savedCards, max) {
+      savedCards.forEach((obj) => {
+        if (!keywordsCount.hasOwnProperty(`${obj.keyword}`)) {
+          keywordsCount[`${obj.keyword}`] = 1;
+        } else {
+          keywordsCount[`${obj.keyword}`] = keywordsCount[`${obj.keyword}`] + 1;
+        }
+        /* получаем максимальное число совпадений и этот повторяемый ключ */
+        if (max[0] < Number(keywordsCount[`${obj.keyword}`])) {
+          max[0] = Number(keywordsCount[`${obj.keyword}`]);
+          max[1] = `${obj.keyword}`;
+        }
+      });
+    }
+    getMaxValues(savedCards, max);
+
+    /* убираем его из объекта keywordsCount */
+    savedCardToEdit = savedCardToEdit.filter((obj) => `${obj.keyword}` !== max[1]);
+
+    getMaxValues(savedCardToEdit, maxSecond);
+
+    keywordsCount.max = max;
+    keywordsCount.maxSecond = maxSecond;
+    return keywordsCount;
+  }
+
+  const keywordsQuantityObj = getKeywordsQuantityObj();
+
   return (
     <main className="main">
       <Route path='/saved-news'>
-        <SavedNews loggedIn={loggedIn} savedCards={savedCards} />
+        <SavedNews
+          loggedIn={loggedIn}
+          savedCards={savedCards}
+          keywords={keywordsQuantityObj}
+          onSaveCard={onSaveCard}
+          onDeleteCard={onDeleteCard}
+        />
       </Route>
       <Route path='/'>
         {

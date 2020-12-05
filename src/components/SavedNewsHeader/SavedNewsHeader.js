@@ -4,8 +4,9 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 
 import './SavedNewsHeader.css';
 
-function SavedNewsHeader({ savedCards }) {
+function SavedNewsHeader({ savedCards, keywords }) {
   const currentUser = React.useContext(CurrentUserContext);
+  const anotherCount = keywords.length - keywords.maxSecond[0] !== 0 ? 2 : 1;
 
   function declOfNum(number, words) {
     return words[(number % 100 > 4 && number % 100 < 20)
@@ -21,8 +22,21 @@ function SavedNewsHeader({ savedCards }) {
       <p className="saved-news__message">{
         `${currentUser.name}, у вас ${savedCards.length} ${declOfNum(savedCards.length, ['сохранённая статья', 'сохранённые статьи', 'сохранённых статей'])}`}</p>
       <p className="saved-news__tags">
-        По ключевым словам: <span className="saved-news__tags-bold">Природа</span>
-        , <span className="saved-news__tags-bold">Тайга</span> и 2-м другим
+        По ключевым словам: <span className="saved-news__tags-bold">{keywords.max[1]}</span>
+        {
+          keywords.maxSecond[0] !== 0
+            ? (<>
+              <span>, </span>
+              <span className="saved-news__tags-bold">{keywords.maxSecond[1]} </span>
+            </>)
+            : ' '
+        }
+        {
+          anotherCount
+            ? `${anotherCount}-м другим`
+            : ''
+        }
+
       </p>
     </section>
   );
@@ -30,6 +44,7 @@ function SavedNewsHeader({ savedCards }) {
 
 SavedNewsHeader.propTypes = {
   savedCards: PropTypes.array.isRequired,
+  keywords: PropTypes.object,
 };
 
 export default SavedNewsHeader;

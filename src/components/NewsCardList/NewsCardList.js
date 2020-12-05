@@ -29,7 +29,7 @@ function NewsCardList({
   }
 
   function truncString(max, str) {
-    return `${str.slice(0, max - 3)}...`;
+    return str.length > max ? `${str.slice(0, max - 3)}...` : str;
   }
 
   React.useEffect(() => {
@@ -58,7 +58,7 @@ function NewsCardList({
             image={item.image}
           />))}
         </ul>
-        {(cards.length - cardIndex) > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
+        {cards.length - cardIndex > 0 ? (<button onClick={showMore} className="card-list__more">Показать еще</button>) : ''}
       </section>
     );
   } return (null);

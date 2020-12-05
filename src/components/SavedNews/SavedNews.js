@@ -1,17 +1,26 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import SavedNewsCardList from '../SavedNewsCardList/SavedNewsCardList';
+import NewsCardList from '../NewsCardList/NewsCardList';
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 import './SavedNews.css';
 
-function SavedNews({ loggedIn, savedCards }) {
+function SavedNews({
+  loggedIn,
+  savedCards,
+  keywords,
+  onSaveCard,
+  onDeleteCard,
+}) {
+  console.log('keywords', keywords);
   return (
     <>
-      <SavedNewsHeader savedCards={savedCards} />
-      <SavedNewsCardList
+      <SavedNewsHeader savedCards={savedCards} keywords={keywords} />
+      <NewsCardList
         loggedIn={loggedIn}
         savedCards={savedCards}
+        onSaveCard={onSaveCard}
+        onDeleteCard={onDeleteCard}
       />
     </>
   );
@@ -20,6 +29,9 @@ function SavedNews({ loggedIn, savedCards }) {
 SavedNews.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   savedCards: PropTypes.array,
+  keywords: PropTypes.object,
+  onSaveCard: PropTypes.func,
+  onDeleteCard: PropTypes.func,
 };
 
 export default SavedNews;
