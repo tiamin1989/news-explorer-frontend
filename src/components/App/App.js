@@ -37,6 +37,7 @@ function App() {
   const [savedCards, setSavedCards] = React.useState([]);
 
   const [updateCards, setUpdateCards] = React.useState(false);
+  const [isSearching, setIsSearching] = React.useState(false);
 
   const history = useHistory();
 
@@ -198,12 +199,10 @@ function App() {
           setIsLoading(false);
         } else {
           setIsLoading(false);
+          setIsSearching(true);
         }
-        /*         setCards(transformed);
-                localStorage.setItem('cards', JSON.stringify(transformed)); */
       })
-      .catch((err) => {
-        console.log(err);
+      .catch(() => {
         setIsLoading(false);
         showMessage({
           name: 'failure',
@@ -333,6 +332,7 @@ function App() {
             onSaveCard={handleSaveCard}
             onDeleteCard={handleDeleteCard}
             showOffer={handleShowOffer}
+            isSearching={isSearching}
           />
           <About />
         </Route>

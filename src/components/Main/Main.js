@@ -17,6 +17,7 @@ function Main({
   onSaveCard,
   onDeleteCard,
   showOffer,
+  isSearching,
 }) {
   function getKeywordsQuantityObj() {
     /* eslint-disable */
@@ -76,7 +77,8 @@ function Main({
               cards={cards}
               savedCards={savedCards}
               onSaveCard={onSaveCard}
-              onDeleteCard={onDeleteCard} />
+              onDeleteCard={onDeleteCard}
+              isSearching={isSearching} />
         }
       </Route>
     </main>
@@ -91,6 +93,7 @@ Main.propTypes = {
   onSaveCard: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
   showOffer: PropTypes.func.isRequired,
+  isSearching: PropTypes.bool,
 };
 
 export default Main;

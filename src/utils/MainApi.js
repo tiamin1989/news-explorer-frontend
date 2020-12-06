@@ -4,7 +4,6 @@ class MainApi {
   }
 
   register({ name, email, password }) {
-    console.log('register');
     return fetch(`${this.baseUrl}/signup`, {
       method: 'POST',
       headers: {

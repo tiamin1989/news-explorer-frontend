@@ -57,8 +57,21 @@
   cursor: pointer;
 }
 
+.popup__submit-button_disabled {
+  background: #E6E8EB;
+  color: #B6BCBF;
+  box-shadow: none;
+  cursor: default;
+}
+
 .popup__submit-button:hover {
   background: #347EFF;
+}
+
+.popup__submit-button_disabled:hover {
+  background: #E6E8EB;
+  color: #B6BCBF;
+  box-shadow: none;
 }
 
 .popup__submit-button:focus {

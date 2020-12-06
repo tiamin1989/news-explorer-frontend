@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import NewsCard from '../NewsCard/NewsCard';
 import SavedNewsCard from '../SavedNewsCard/SavedNewsCard';
 
+import Preloader from '../Preloader/Preloader';
+
 import './NewsCardList.css';
 
 function NewsCardList({
@@ -13,6 +15,7 @@ function NewsCardList({
   onSaveCard,
   onDeleteCard,
   showOffer,
+  isSearching,
 }) {
   const location = useLocation();
   const [cardIndex, setCardIndex] = React.useState(0);
@@ -45,13 +48,6 @@ function NewsCardList({
       setCardIndex(savedCards.length - 1);
     }
   }, []);
-
-  /*   React.useEffect(() => {
-      if (!location.pathname === '/' && savedCards) {
-        setCardList(savedCards);
-        setCardIndex(savedCards.length - 1);
-      }
-    }, [savedCards]); */
 
   React.useEffect(() => {
     if (location.pathname === '/' && cards) {
@@ -111,7 +107,11 @@ function NewsCardList({
         }
       </section>
     );
-  } return (null);
+  }
+  if (!cardList.length && !isSearching) {
+    return (<Preloader />);
+  }
+  return (null);
 }
 
 NewsCardList.propTypes = {
@@ -121,6 +121,7 @@ NewsCardList.propTypes = {
   onSaveCard: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
   showOffer: PropTypes.func.isRequired,
+  isSearching: PropTypes.bool,
 };
 
 export default NewsCardList;
