@@ -12,6 +12,7 @@ function NewsCardList({
   savedCards,
   onSaveCard,
   onDeleteCard,
+  showOffer,
 }) {
   const location = useLocation();
   const [cardIndex, setCardIndex] = React.useState(0);
@@ -45,12 +46,12 @@ function NewsCardList({
     }
   }, []);
 
-  React.useEffect(() => {
-    if (!location.pathname === '/' && savedCards) {
-      setCardList(savedCards);
-      setCardIndex(savedCards.length - 1);
-    }
-  }, [savedCards]);
+  /*   React.useEffect(() => {
+      if (!location.pathname === '/' && savedCards) {
+        setCardList(savedCards);
+        setCardIndex(savedCards.length - 1);
+      }
+    }, [savedCards]); */
 
   React.useEffect(() => {
     if (location.pathname === '/' && cards) {
@@ -77,6 +78,7 @@ function NewsCardList({
                 onSaveCard={onSaveCard}
                 onDeleteCard={onDeleteCard}
                 checkIsAdded={checkIsAdded}
+                showOffer={showOffer}
                 keyword={truncString(30, item.keyword)}
                 text={item.text.replace(/<[^>]+>/g, '')}
                 date={item.date}
@@ -118,6 +120,7 @@ NewsCardList.propTypes = {
   savedCards: PropTypes.array,
   onSaveCard: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
+  showOffer: PropTypes.func.isRequired,
 };
 
 export default NewsCardList;

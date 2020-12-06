@@ -16,6 +16,7 @@ function Main({
   cards,
   onSaveCard,
   onDeleteCard,
+  showOffer,
 }) {
   function getKeywordsQuantityObj() {
     /* eslint-disable */
@@ -71,6 +72,7 @@ function Main({
             ? <Preloader isLoading={isLoading} />
             : <NewsCardList
               loggedIn={loggedIn}
+              showOffer={showOffer}
               cards={cards}
               savedCards={savedCards}
               onSaveCard={onSaveCard}
@@ -88,6 +90,7 @@ Main.propTypes = {
   savedCards: PropTypes.array,
   onSaveCard: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
+  showOffer: PropTypes.func.isRequired,
 };
 
 export default Main;

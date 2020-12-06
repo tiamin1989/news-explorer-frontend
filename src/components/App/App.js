@@ -83,6 +83,16 @@ function App() {
     setMessagePopupOpen(true);
   }
 
+  function handleShowOffer() {
+    showMessage({
+      name: 'failure',
+      title: 'Необходимо авторизоваться',
+      content: (<span className="popup__offer popup__offer_left">
+        Для сохранения карточек в учетной записи необходимо авторизоваться
+      </span>),
+    });
+  }
+
   function handleLoginPopupSubmit({ email, password }) {
     connectMainApi.login({ email, password })
       .then((res) => {
@@ -182,9 +192,15 @@ function App() {
             image: obj.urlToImage,
           });
         });
-        setCards(transformed);
-        localStorage.setItem('cards', JSON.stringify(transformed));
-        setIsLoading(false);
+        if (transformed) {
+          setCards(transformed);
+          localStorage.setItem('cards', JSON.stringify(transformed));
+          setIsLoading(false);
+        } else {
+          setIsLoading(false);
+        }
+        /*         setCards(transformed);
+                localStorage.setItem('cards', JSON.stringify(transformed)); */
       })
       .catch((err) => {
         console.log(err);
@@ -265,8 +281,14 @@ function App() {
         .then((res) => {
           setSavedCards(res);
         })
-        .catch(() => {
-          console.log('Ошибка устаноки стейта сохраненных карточек');
+        .catch((err) => {
+          showMessage({
+            name: 'failure',
+            title: `Ошибка ${err.status}`,
+            content: (<span className="popup__offer popup__offer_left">
+              {err.statusText}
+            </span>),
+          });
         });
     } else {
       setLoggedIn(false);
@@ -298,6 +320,7 @@ function App() {
           savedCards={savedCards}
           onSaveCard={handleSaveCard}
           onDeleteCard={handleDeleteCard}
+          showOffer={handleShowOffer}
           component={Main}
         />
 
@@ -309,6 +332,7 @@ function App() {
             savedCards={savedCards}
             onSaveCard={handleSaveCard}
             onDeleteCard={handleDeleteCard}
+            showOffer={handleShowOffer}
           />
           <About />
         </Route>

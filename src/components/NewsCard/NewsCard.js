@@ -9,6 +9,7 @@ function NewsCard({
   isAdded,
   onSaveCard,
   onDeleteCard,
+  showOffer,
   keyword,
   text,
   date,
@@ -31,6 +32,10 @@ function NewsCard({
       e.target.classList.remove('card-list__card-added_active');
       message.current.classList.remove('card-list__card-message_active');
     }
+  }
+
+  function showRegistrationOffer() {
+    showOffer();
   }
 
   function saveCard() {
@@ -83,7 +88,7 @@ function NewsCard({
           </>
         ) : (
             <>
-              <button className="card-list__card-added" onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+              <button className="card-list__card-added" onMouseEnter={showMessage} onMouseLeave={hideMessage} onClick={showRegistrationOffer} />
               <span ref={message} className="card-list__card-message">Войдите, чтобы сохранять статьи</span>
             </>
         )
@@ -103,6 +108,7 @@ NewsCard.propTypes = {
   isAdded: PropTypes.object.isRequired,
   onSaveCard: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func.isRequired,
+  showOffer: PropTypes.func.isRequired,
   keyword: PropTypes.string.isRequired,
   link: PropTypes.string.isRequired,
   image: PropTypes.string,
