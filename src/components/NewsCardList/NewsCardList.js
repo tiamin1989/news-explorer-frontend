@@ -46,11 +46,18 @@ function NewsCardList({
   }, []);
 
   React.useEffect(() => {
-    if (!location.pathname === '/') {
+    if (!location.pathname === '/' && savedCards) {
       setCardList(savedCards);
       setCardIndex(savedCards.length - 1);
     }
   }, [savedCards]);
+
+  React.useEffect(() => {
+    if (location.pathname === '/' && cards) {
+      setCardList(cards ? cards.slice(cardIndex, cardIndex + 3) : []);
+      setCardIndex(cardIndex + 3);
+    }
+  }, [cards]);
 
   if (cardList.length) {
     return (

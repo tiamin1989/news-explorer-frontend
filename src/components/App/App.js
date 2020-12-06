@@ -36,6 +36,8 @@ function App() {
   const [cards, setCards] = React.useState([]);
   const [savedCards, setSavedCards] = React.useState([]);
 
+  const [updateCards, setUpdateCards] = React.useState(false);
+
   const history = useHistory();
 
   function closeAllPopups() {
@@ -225,11 +227,6 @@ function App() {
   }
 
   React.useEffect(() => {
-    const storageCards = localStorage.getItem('cards');
-    if (storageCards) {
-      setCards(JSON.parse(storageCards));
-    }
-
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       connectMainApi.authorize({ jwt })
@@ -246,7 +243,19 @@ function App() {
           });
         });
     }
+    const storageCards = localStorage.getItem('cards');
+    if (storageCards) {
+      setUpdateCards(true);
+    }
   }, []);
+
+  React.useEffect(() => {
+    if (updateCards) {
+      const storageCards1 = localStorage.getItem('cards');
+      setCards(JSON.parse(storageCards1));
+      setUpdateCards(false);
+    }
+  }, [updateCards]);
 
   React.useEffect(() => {
     const jwt = localStorage.getItem('jwt');

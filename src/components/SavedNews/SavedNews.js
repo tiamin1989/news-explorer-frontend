@@ -1,25 +1,25 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import NewsCardList from '../NewsCardList/NewsCardList';
+/* import NewsCardList from '../NewsCardList/NewsCardList'; */
 import SavedNewsHeader from '../SavedNewsHeader/SavedNewsHeader';
 
 import './SavedNews.css';
 
 function SavedNews({
-  loggedIn,
+/*   loggedIn, */
   savedCards,
   keywords,
-  onSaveCard,
-  onDeleteCard,
+/*   onSaveCard,
+  onDeleteCard, */
 }) {
   return (
     <>
       <SavedNewsHeader savedCards={savedCards} keywords={keywords} />
-      <NewsCardList
+      {/* <NewsCardList
         loggedIn={loggedIn}
         savedCards={savedCards}
         onSaveCard={onSaveCard}
-        onDeleteCard={onDeleteCard} />
+        onDeleteCard={onDeleteCard} /> */}
     </>
   );
 }

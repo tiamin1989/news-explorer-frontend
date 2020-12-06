@@ -33,7 +33,7 @@ function SavedNewsHeader({ savedCards, keywords }) {
         }
         {
           anotherCount > 0
-            ? `и ${anotherCount}-м другим`
+            ? `и ${anotherCount}-${declOfNum(anotherCount, ['му другому', 'м другим', 'м другим'])}`
             : ''
         }
       </p>
