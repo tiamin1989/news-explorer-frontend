@@ -108,7 +108,7 @@ function NewsCardList({
       </section>
     );
   }
-  if (!cardList.length && !isSearching) {
+  if (!cardList.length && isSearching) {
     return (<Preloader />);
   }
   return (null);

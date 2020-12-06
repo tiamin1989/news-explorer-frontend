@@ -22,7 +22,11 @@ function SavedNewsHeader({ savedCards, keywords }) {
       <p className="saved-news__message">{
         `${currentUser.name}, у вас ${savedCards.length} ${declOfNum(savedCards.length, ['сохранённая статья', 'сохранённые статьи', 'сохранённых статей'])}`}</p>
       <p className="saved-news__tags">
-        По ключевым словам: <span className="saved-news__tags-bold">{keywords.max[1]}</span>
+        {
+          savedCards.length
+            ? (<><span>По ключевым словам: </span><span className="saved-news__tags-bold">{keywords.max[1]}</span></>)
+            : ''
+        }
         {
           keywords.maxSecond[0] !== 0
             ? (<>

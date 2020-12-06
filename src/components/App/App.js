@@ -269,6 +269,7 @@ function App() {
       const storageCards1 = localStorage.getItem('cards');
       setCards(JSON.parse(storageCards1));
       setUpdateCards(false);
+      setIsSearching(true);
     }
   }, [updateCards]);
 
