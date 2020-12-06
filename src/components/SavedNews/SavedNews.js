@@ -12,7 +12,6 @@ function SavedNews({
   onSaveCard,
   onDeleteCard,
 }) {
-  console.log('keywords', keywords);
   return (
     <>
       <SavedNewsHeader savedCards={savedCards} keywords={keywords} />
@@ -20,8 +19,7 @@ function SavedNews({
         loggedIn={loggedIn}
         savedCards={savedCards}
         onSaveCard={onSaveCard}
-        onDeleteCard={onDeleteCard}
-      />
+        onDeleteCard={onDeleteCard} />
     </>
   );
 }
@@ -30,7 +28,7 @@ SavedNews.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   savedCards: PropTypes.array,
   keywords: PropTypes.object,
-  onSaveCard: PropTypes.func,
+  onSaveCard: PropTypes.func.isRequired,
   onDeleteCard: PropTypes.func,
 };
 

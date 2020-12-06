@@ -30,7 +30,7 @@ function SavedNewsCard({
   }
 
   function deleteCard() {
-    onDeleteCard(isAdded.id);
+    onDeleteCard(isAdded._id);
   }
 
   function onCardClick() {
@@ -63,7 +63,6 @@ SavedNewsCard.propTypes = {
   source: PropTypes.string.isRequired,
   date: PropTypes.string.isRequired,
   text: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
 };
 
 export default SavedNewsCard;

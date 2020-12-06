@@ -281,6 +281,7 @@ function App() {
           loggedIn={loggedIn}
           isLoading={isLoading}
           savedCards={savedCards}
+          onSaveCard={handleSaveCard}
           onDeleteCard={handleDeleteCard}
           component={Main}
         />

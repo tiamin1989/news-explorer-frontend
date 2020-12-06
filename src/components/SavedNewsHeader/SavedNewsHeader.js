@@ -6,7 +6,7 @@ import './SavedNewsHeader.css';
 
 function SavedNewsHeader({ savedCards, keywords }) {
   const currentUser = React.useContext(CurrentUserContext);
-  const anotherCount = keywords.length - keywords.maxSecond[0] !== 0 ? 2 : 1;
+  const anotherCount = Object.keys(keywords.keywords).length - 2;
 
   function declOfNum(number, words) {
     return words[(number % 100 > 4 && number % 100 < 20)
@@ -32,11 +32,10 @@ function SavedNewsHeader({ savedCards, keywords }) {
             : ' '
         }
         {
-          anotherCount
-            ? `${anotherCount}-м другим`
+          anotherCount !== 1
+            ? `и ${anotherCount}-м другим`
             : ''
         }
-
       </p>
     </section>
   );

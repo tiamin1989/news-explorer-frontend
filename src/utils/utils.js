@@ -12,7 +12,7 @@ const formattedDateFrom = `${dateFrom.getFullYear()}-${dateFrom.getMonth() + 1}-
 export const connectNewsApi = new NewsApi({
   baseUrl: `https://nomoreparties.co/news/v2/everything?language=ru&apiKey=${apiKey}&from=${formattedDateFrom}&to=${formattedDateTo}&pageSize=100`,
 });
-console.log(formattedDateFrom);
+
 export const connectMainApi = new MainApi({
   baseUrl: 'https://api.diploma1989.students.nomoreparties.space',
 });

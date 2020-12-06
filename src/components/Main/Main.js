@@ -24,30 +24,32 @@ function Main({
     let maxSecond = [0, ''];
     let savedCardToEdit = JSON.parse(JSON.stringify(savedCards));
 
-    function getMaxValues(savedCards, max) {
-      savedCards.forEach((obj) => {
-        if (!keywordsCount.hasOwnProperty(`${obj.keyword}`)) {
-          keywordsCount[`${obj.keyword}`] = 1;
+    function getMaxValues(cards, max) {
+      cards.forEach((obj) => {
+        if (!keywordsCount.hasOwnProperty(obj.keyword)) {
+          keywordsCount[obj.keyword] = 1;
         } else {
-          keywordsCount[`${obj.keyword}`] = keywordsCount[`${obj.keyword}`] + 1;
+          keywordsCount[obj.keyword] += 1;
         }
         /* получаем максимальное число совпадений и этот повторяемый ключ */
-        if (max[0] < Number(keywordsCount[`${obj.keyword}`])) {
-          max[0] = Number(keywordsCount[`${obj.keyword}`]);
-          max[1] = `${obj.keyword}`;
+        if (max[0] < keywordsCount[obj.keyword]) {
+          max[0] = keywordsCount[obj.keyword];
+          max[1] = obj.keyword;
         }
       });
     }
     getMaxValues(savedCards, max);
 
     /* убираем его из объекта keywordsCount */
-    savedCardToEdit = savedCardToEdit.filter((obj) => `${obj.keyword}` !== max[1]);
+    savedCardToEdit = savedCardToEdit.filter((obj) => obj.keyword !== max[1]);
 
     getMaxValues(savedCardToEdit, maxSecond);
 
-    keywordsCount.max = max;
-    keywordsCount.maxSecond = maxSecond;
-    return keywordsCount;
+    return {
+      keywords: keywordsCount,
+      max,
+      maxSecond,
+    };
   }
 
   const keywordsQuantityObj = getKeywordsQuantityObj();
@@ -84,8 +86,8 @@ Main.propTypes = {
   isLoading: PropTypes.bool.isRequired,
   cards: PropTypes.array,
   savedCards: PropTypes.array,
-  onSaveCard: PropTypes.func,
-  onDeleteCard: PropTypes.func,
+  onSaveCard: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
 };
 
 export default Main;
