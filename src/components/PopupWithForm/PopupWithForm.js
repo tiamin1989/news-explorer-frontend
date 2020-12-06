@@ -11,6 +11,7 @@ function PopupWithForm(
     isOpen,
     onClose,
     onSubmit,
+    onChange,
   },
 ) {
   function handlePopupClick(e) {
@@ -35,7 +36,7 @@ function PopupWithForm(
 
   return (
     <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : 'popup_closed'}`} onClick={handlePopupClick}>
-      <form className="popup__container" name={name} onSubmit={onSubmit} noValidate>
+      <form className="popup__container" name={name} onSubmit={onSubmit} onChange={onChange}>
         <h2 className="popup__title">{title}</h2>
         <button type="button" className="popup__close" onClick={onClose} />
         {children}

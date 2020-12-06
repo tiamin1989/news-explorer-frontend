@@ -18,13 +18,10 @@ function NewsCardList({
   isSearching,
 }) {
   const location = useLocation();
-  const [cardIndex, setCardIndex] = React.useState(0);
-  const [cardList, setCardList] = React.useState([]);
+  const [needDisplayCount, setNeedDisplayCount] = React.useState(3);
 
   function showMore() {
-    const nextCards = cards.slice(cardIndex, cardIndex + 3);
-    setCardList([...cardList, ...nextCards]);
-    setCardIndex(cardIndex + 3);
+    setNeedDisplayCount(needDisplayCount + 3);
   }
 
   function checkIsAdded(link) {
@@ -39,24 +36,14 @@ function NewsCardList({
     return str.length > max ? `${str.slice(0, max - 3)}...` : str;
   }
 
-  React.useEffect(() => {
-    if (location.pathname === '/') {
-      setCardList(cards ? cards.slice(cardIndex, cardIndex + 3) : []);
-      setCardIndex(cardIndex + 3);
-    } else {
-      setCardList(savedCards);
-      setCardIndex(savedCards.length - 1);
-    }
-  }, []);
+  let currentCardList = [];
+  if (location.pathname === '/' && cards) {
+    currentCardList = cards.slice(0, needDisplayCount);
+  } else {
+    currentCardList = savedCards;
+  }
 
-  React.useEffect(() => {
-    if (location.pathname === '/' && cards) {
-      setCardList(cards ? cards.slice(cardIndex, cardIndex + 3) : []);
-      setCardIndex(cardIndex + 3);
-    }
-  }, [cards]);
-
-  if (cardList.length) {
+  if (currentCardList.length) {
     return (
       <section className="card-list">
         {
@@ -65,7 +52,7 @@ function NewsCardList({
             : ''
         }
         <ul className="card-list__news-cards">
-          {cardList.map((item, index) => {
+          {currentCardList.map((item, index) => {
             if (location.pathname === '/') {
               return (<NewsCard
                 key={index}
@@ -101,14 +88,14 @@ function NewsCardList({
             />);
           })}
         </ul>
-        {location.pathname === '/' && (cards.length - cardIndex > 0)
+        {location.pathname === '/' && (currentCardList.length !== cards.length)
           ? (<button onClick={showMore} className="card-list__more">Показать еще</button>)
           : ''
         }
       </section>
     );
   }
-  if (!cardList.length && isSearching && loggedIn) {
+  if (!currentCardList.length && isSearching && loggedIn) {
     return (<Preloader />);
   }
   return (null);
