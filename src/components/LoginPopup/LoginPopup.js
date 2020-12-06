@@ -30,7 +30,6 @@ function LoginPopup(
     });
   }
 
-  console.log(emailValidation);
   return (
     <PopupWithForm
       onSubmit={handleSubmit}

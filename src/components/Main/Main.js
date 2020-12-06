@@ -41,10 +41,8 @@ function Main({
       });
     }
     getMaxValues(savedCards, max);
-
     /* убираем его из объекта keywordsCount */
     savedCardToEdit = savedCardToEdit.filter((obj) => obj.keyword !== max[1]);
-
     getMaxValues(savedCardToEdit, maxSecond);
 
     return {

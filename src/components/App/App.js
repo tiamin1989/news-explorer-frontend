@@ -242,6 +242,7 @@ function App() {
   }
 
   React.useEffect(() => {
+    setIsLoading(false);
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       connectMainApi.authorize({ jwt })
