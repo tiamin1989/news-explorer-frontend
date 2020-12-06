@@ -181,6 +181,7 @@ function App() {
           });
         });
         setCards(transformed);
+        localStorage.setItem('cards', JSON.stringify(transformed));
         setIsLoading(false);
       })
       .catch((err) => {
@@ -224,6 +225,11 @@ function App() {
   }
 
   React.useEffect(() => {
+    const storageCards = localStorage.getItem('cards');
+    if (storageCards) {
+      setCards(JSON.parse(storageCards));
+    }
+
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
       connectMainApi.authorize({ jwt })

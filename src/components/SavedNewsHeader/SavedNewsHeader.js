@@ -32,7 +32,7 @@ function SavedNewsHeader({ savedCards, keywords }) {
             : ' '
         }
         {
-          anotherCount !== 1
+          anotherCount > 0
             ? `и ${anotherCount}-м другим`
             : ''
         }

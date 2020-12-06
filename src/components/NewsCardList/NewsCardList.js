@@ -45,6 +45,13 @@ function NewsCardList({
     }
   }, []);
 
+  React.useEffect(() => {
+    if (!location.pathname === '/') {
+      setCardList(savedCards);
+      setCardIndex(savedCards.length - 1);
+    }
+  }, [savedCards]);
+
   if (cardList.length) {
     return (
       <section className="card-list">
