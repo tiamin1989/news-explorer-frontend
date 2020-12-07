@@ -20,15 +20,13 @@ function Main({
   isSearching,
 }) {
   function getKeywordsQuantityObj() {
-    /* eslint-disable */
     const keywordsCount = {};
-    let max = [0, ''];
-    let maxSecond = [0, ''];
     let savedCardToEdit = JSON.parse(JSON.stringify(savedCards));
 
-    function getMaxValues(cards, max) {
-      cards.forEach((obj) => {
-        if (!keywordsCount.hasOwnProperty(obj.keyword)) {
+    function getMaxValues(cardsToSearch) {
+      const max = [0, ''];
+      cardsToSearch.forEach((obj) => {
+        if (!Object.prototype.hasOwnProperty.call(obj, obj.keyword)) {
           keywordsCount[obj.keyword] = 1;
         } else {
           keywordsCount[obj.keyword] += 1;
@@ -39,11 +37,12 @@ function Main({
           max[1] = obj.keyword;
         }
       });
+      return max;
     }
-    getMaxValues(savedCards, max);
+    const max = getMaxValues(savedCards);
     /* убираем его из объекта keywordsCount */
     savedCardToEdit = savedCardToEdit.filter((obj) => obj.keyword !== max[1]);
-    getMaxValues(savedCardToEdit, maxSecond);
+    const maxSecond = getMaxValues(savedCardToEdit);
 
     return {
       keywords: keywordsCount,
