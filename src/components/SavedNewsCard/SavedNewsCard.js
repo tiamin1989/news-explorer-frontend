@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { showDate } from '../../utils/utils';
 
 function SavedNewsCard({
   isAdded,
@@ -43,7 +44,7 @@ function SavedNewsCard({
       <button className="card-list__card-added card-list__card-added_delete" onMouseEnter={showMessage} onMouseLeave={hideMessage} onClick={deleteCard} />
       <span ref={message} className="card-list__card-message card-list__card-message_big">Убрать из сохранённых</span>
       <div className="card-list__wrapper" onClick={onCardClick}>
-        <span className="card-list__card-date">{date}</span>
+        <span className="card-list__card-date">{showDate(date)}</span>
         <h2 className="card-list__card-title">{title}</h2>
         <p className="card-list__card-text">{text}</p>
         <span className="card-list__card-source">{source}</span>
