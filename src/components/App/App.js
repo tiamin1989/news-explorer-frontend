@@ -16,8 +16,6 @@ import CurrentUserContext from '../../contexts/CurrentUserContext';
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 import { connectNewsApi, connectMainApi } from '../../utils/utils';
 
-import './App.css';
-
 function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   const [currentUser, setCurrentUser] = React.useState({});
@@ -150,7 +148,6 @@ function App() {
         setSavedCards(savedCards.filter((obj) => obj._id !== cardId));
       })
       .catch((err) => {
-        console.log(err);
         showMessage({
           name: 'failure',
           title: `Ошибка ${err.status}`,

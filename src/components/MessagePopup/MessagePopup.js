@@ -2,13 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-import './MessagePopup.css';
-
 function MessagePopup(
   {
     isOpen,
     onClose,
-    /*     onLoginClick, */
     name,
     title,
     content,

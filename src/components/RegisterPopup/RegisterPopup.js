@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-import './RegisterPopup.css';
-
 function RegisterPopup(
   {
     isOpen,

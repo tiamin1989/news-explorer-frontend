@@ -1,5 +1,4 @@
 import React from 'react';
-import './SavedNewsCard.css';
 import PropTypes from 'prop-types';
 
 function SavedNewsCard({
