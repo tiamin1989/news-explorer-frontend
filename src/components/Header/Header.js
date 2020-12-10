@@ -13,6 +13,8 @@ function Header({
   loggedIn,
   onLoginClick,
   onUnLoginClick,
+  onSearchSubmit,
+  onError,
 }) {
   const location = useLocation();
   const history = useHistory();
@@ -54,7 +56,7 @@ function Header({
         <img src={location.pathname === '/saved-news' ? hamburgerWhite : hamburger} alt="Открыть" className={`header__hamburger-img${location.pathname === '/saved-news' ? ' header__hamburger-img_white' : ''}`} onClick={toggleHamburger} />
       </div>
       <div className={`header__line${location.pathname === '/saved-news' ? ' header__line_white' : ''}`}></div>
-      {location.pathname === '/' ? <SearchForm /> : ''}
+      {location.pathname === '/' ? <SearchForm onSearchSubmit={onSearchSubmit} onError={onError} /> : ''}
     </header>
   );
 }
@@ -63,6 +65,8 @@ Header.propTypes = {
   loggedIn: PropTypes.bool.isRequired,
   onLoginClick: PropTypes.func.isRequired,
   onUnLoginClick: PropTypes.func.isRequired,
+  onSearchSubmit: PropTypes.func.isRequired,
+  onError: PropTypes.func,
 };
 
 export default Header;

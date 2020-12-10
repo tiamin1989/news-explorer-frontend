@@ -40,6 +40,16 @@
   opacity: .2;
 }
 
+.popup__error {
+  margin: 6px 35px 0;
+  font-family: 'Inter', Tahoma, sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FF0000;
+}
+
 .popup__submit-button {
   height: 63px;
   border: 0;
@@ -57,8 +67,21 @@
   cursor: pointer;
 }
 
+.popup__submit-button_disabled {
+  background: #E6E8EB;
+  color: #B6BCBF;
+  box-shadow: none;
+  cursor: default;
+}
+
 .popup__submit-button:hover {
   background: #347EFF;
+}
+
+.popup__submit-button_disabled:hover {
+  background: #E6E8EB;
+  color: #B6BCBF;
+  box-shadow: none;
 }
 
 .popup__submit-button:focus {
@@ -80,9 +103,14 @@
 .popup__offer_left {
   margin: 14px 36px 31px;
   align-self: flex-start;
+  text-align: left;
 }
 
 .popup__offer-link {
   text-decoration: none;
   color: #2F71E5;
+}
+
+.popup__offer-link:hover {
+  color: #6091e7;
 }

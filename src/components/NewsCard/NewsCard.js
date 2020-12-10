@@ -1,9 +1,24 @@
 import React from 'react';
 import './NewsCard.css';
 import PropTypes from 'prop-types';
-import img from '../../images/card-def-image.png';
 
-function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
+import noPhoto from '../../images/no-photo-available.png';
+import { showDate } from '../../utils/utils';
+
+function NewsCard({
+  isLoggedIn,
+  isAdded,
+  onSaveCard,
+  onDeleteCard,
+  showOffer,
+  keyword,
+  text,
+  date,
+  source,
+  title,
+  link,
+  image,
+}) {
   const message = React.useRef(null);
 
   function showMessage(e) {
@@ -20,34 +35,70 @@ function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
     }
   }
 
+  function showRegistrationOffer() {
+    showOffer();
+  }
+
+  function saveCard() {
+    onSaveCard({
+      date,
+      keyword,
+      title,
+      text,
+      source,
+      link,
+      image,
+    });
+  }
+
+  function deleteCard() {
+    onDeleteCard(isAdded._id);
+  }
+
+  function onCardClick() {
+    window.open(link, '_blank');
+  }
+
+  /*   function showDate(dateToFormat) {
+      const months = {
+        1: 'января',
+        2: 'февраля',
+        3: 'марта',
+        4: 'апреля',
+        5: 'мая',
+        6: 'июня',
+        7: 'июля',
+        8: 'августа',
+        9: 'сентября',
+        10: 'октября',
+        11: 'ноября',
+        12: 'декабря',
+      };
+      const extracted = dateToFormat.replace(/T\d{2}:\d{2}:\d{2}Z/, '').split('-');
+      return `${extracted[2]} ${months[extracted[1]]}, ${extracted[0]}`;
+    } */
+
   return (
     <li className="card-list__news-card">
+      <img src={image !== null ? image : noPhoto} alt="Изображение новости" className="card-list__card-image" onClick={onCardClick} />
       {
-        cardCategory ? (
+        isLoggedIn ? (
           <>
-            <span className="card-list__card-category">{cardCategory}</span>
-          </>
-        ) : ''
-      }
-      <img src={img} alt="Изображение новости" className="card-list__card-image" />
-      {
-        !isLoggedIn ? (
-          <>
-            <button className={`card-list__card-added${isAdded ? ' card-list__card-added_delete' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} />
-            <span ref={message} className="card-list__card-message card-list__card-message_big">Убрать из сохранённых</span>
+            <button className={`card-list__card-added${isAdded.isAdded ? ' card-list__card-added_added' : ''}`} onMouseEnter={showMessage} onMouseLeave={hideMessage} onClick={isAdded.isAdded ? deleteCard : saveCard} />
+            <span ref={message} className="card-list__card-message card-list__card-message_big">{isAdded.isAdded ? 'Убрать из сохранённых' : 'Сохранить'}</span>
           </>
         ) : (
             <>
-              <button className="card-list__card-added" onMouseEnter={showMessage} onMouseLeave={hideMessage} />
+              <button className="card-list__card-added" onMouseEnter={showMessage} onMouseLeave={hideMessage} onClick={showRegistrationOffer} />
               <span ref={message} className="card-list__card-message">Войдите, чтобы сохранять статьи</span>
             </>
         )
       }
-      <div className="card-list__wrapper">
-        <span className="card-list__card-date">2 августа, 2019</span>
-        <h2 className="card-list__card-title">Национальное достояние – парки</h2>
-        <p className="card-list__card-text">В 2016 году Америка отмечала важный юбилей: сто лет назад здесь начала складываться система национальных парков – охраняемых территорий, где и сегодня каждый может приобщиться к природе.</p>
-        <span className="card-list__card-source">Лента.ру</span>
+      <div className="card-list__wrapper" onClick={onCardClick}>
+        <span className="card-list__card-date">{showDate(date)}</span>
+        <h2 className="card-list__card-title">{title}</h2>
+        <p className="card-list__card-text">{text}</p>
+        <span className="card-list__card-source">{source}</span>
       </div>
     </li>
   );
@@ -55,8 +106,17 @@ function NewsCard({ isLoggedIn, isAdded, cardCategory }) {
 
 NewsCard.propTypes = {
   isLoggedIn: PropTypes.bool.isRequired,
-  isAdded: PropTypes.bool,
-  cardCategory: PropTypes.string,
+  isAdded: PropTypes.object.isRequired,
+  onSaveCard: PropTypes.func.isRequired,
+  onDeleteCard: PropTypes.func.isRequired,
+  showOffer: PropTypes.func.isRequired,
+  keyword: PropTypes.string.isRequired,
+  link: PropTypes.string.isRequired,
+  image: PropTypes.string,
+  title: PropTypes.string.isRequired,
+  source: PropTypes.string.isRequired,
+  date: PropTypes.string.isRequired,
+  text: PropTypes.string.isRequired,
 };
 
 export default NewsCard;

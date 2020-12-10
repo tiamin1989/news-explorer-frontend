@@ -14,7 +14,6 @@ function PopupWithForm(
   },
 ) {
   function handlePopupClick(e) {
-    e.preventDefault();
     if (e.target === e.currentTarget) onClose();
   }
 
@@ -36,7 +35,7 @@ function PopupWithForm(
 
   return (
     <div className={`popup popup_type_${name} ${isOpen ? 'popup_opened' : 'popup_closed'}`} onClick={handlePopupClick}>
-      <form className="popup__container" name={name} onSubmit={onSubmit} noValidate>
+      <form className="popup__container" name={name} onSubmit={onSubmit} >
         <h2 className="popup__title">{title}</h2>
         <button type="button" className="popup__close" onClick={onClose} />
         {children}

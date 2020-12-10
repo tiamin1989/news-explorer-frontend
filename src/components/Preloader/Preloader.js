@@ -25,7 +25,7 @@ function Preloader({ isLoading }) {
 }
 
 Preloader.propTypes = {
-  isLoading: PropTypes.bool.isRequired,
+  isLoading: PropTypes.bool,
 };
 
 export default Preloader;

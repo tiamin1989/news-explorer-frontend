@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
 import './LoginPopup.css';
+import { useFormWithValidation } from '../FormValidator/FormValidator';
 
 function LoginPopup(
   {
@@ -12,10 +13,21 @@ function LoginPopup(
     onRegisterClick,
   },
 ) {
+  const emailRef = React.useRef(null);
+  const passwordRef = React.useRef(null);
+  const emailValidation = useFormWithValidation();
+
+  const handleChange = (e) => {
+    emailValidation.resetForm();
+    emailValidation.handleChange(e);
+  };
+
   function handleSubmit(e) {
     e.preventDefault();
-    onLogin();
-    onClose();
+    onLogin({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+    });
   }
 
   return (
@@ -25,10 +37,14 @@ function LoginPopup(
       title="Вход"
       isOpen={isOpen}
       onClose={onClose}>
+
       <label htmlFor="login-email" className="popup__label">Email</label>
       <input
+        ref={emailRef}
         id="login-email"
         name="login-email"
+        onChange={handleChange}
+        value={emailValidation.values['login-email'] || ''}
         type="email"
         className="popup__input"
         placeholder="Введите почту"
@@ -37,11 +53,16 @@ function LoginPopup(
       <span
         id="login-email-error"
         className="popup__error"
-      />
+      >
+        {emailValidation.errors['login-email']}
+      </span>
       <label htmlFor="login-password" className="popup__label">Пароль</label>
       <input
+        ref={passwordRef}
         id="login-password"
         name="login-password"
+        onChange={handleChange}
+        value={emailValidation.values['login-password'] || ''}
         type="password"
         className="popup__input"
         placeholder="Введите пароль"
@@ -50,7 +71,9 @@ function LoginPopup(
       <span
         id="login-password-error"
         className="popup__error"
-      />
+      >
+        {emailValidation.errors['login-password']}
+      </span>
       <input
         type="submit"
         value="Войти"

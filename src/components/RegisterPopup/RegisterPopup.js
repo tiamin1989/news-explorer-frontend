@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import PopupWithForm from '../PopupWithForm/PopupWithForm';
 
-import './RegisterPopup.css';
-
 function RegisterPopup(
   {
     isOpen,
@@ -12,10 +10,17 @@ function RegisterPopup(
     onLoginClick,
   },
 ) {
+  const emailRef = React.useRef(null);
+  const passwordRef = React.useRef(null);
+  const nameRef = React.useRef(null);
+
   function handleSubmit(e) {
     e.preventDefault();
-    onRegister();
-    onClose();
+    onRegister({
+      email: emailRef.current.value,
+      password: passwordRef.current.value,
+      name: nameRef.current.value,
+    });
   }
 
   return (
@@ -27,6 +32,7 @@ function RegisterPopup(
       onClose={onClose}>
       <label htmlFor="register-email" className="popup__label">Email</label>
       <input
+        ref={emailRef}
         id="register-email"
         name="register-email"
         type="email"
@@ -40,6 +46,7 @@ function RegisterPopup(
       />
       <label htmlFor="register-password" className="popup__label">Пароль</label>
       <input
+        ref={passwordRef}
         id="register-password"
         name="register-password"
         type="password"
@@ -53,6 +60,7 @@ function RegisterPopup(
       />
       <label htmlFor="register-name" className="popup__label">Имя</label>
       <input
+        ref={nameRef}
         id="register-name"
         name="register-name"
         type="text"
