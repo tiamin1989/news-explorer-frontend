@@ -3,7 +3,7 @@ import { useLocation } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import NewsCard from '../NewsCard/NewsCard';
 import SavedNewsCard from '../SavedNewsCard/SavedNewsCard';
-
+import { showCardsCount } from '../../utils/constants';
 import Preloader from '../Preloader/Preloader';
 
 import './NewsCardList.css';
@@ -21,7 +21,7 @@ function NewsCardList({
   const [needDisplayCount, setNeedDisplayCount] = React.useState(3);
 
   function showMore() {
-    setNeedDisplayCount(needDisplayCount + 3);
+    setNeedDisplayCount(needDisplayCount + showCardsCount);
   }
 
   function checkIsAdded(link) {

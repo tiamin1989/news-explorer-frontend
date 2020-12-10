@@ -1,12 +1,12 @@
-import apiKey from './constants';
 import NewsApi from './NewsApi';
 import MainApi from './MainApi';
+import { apiKey, newsDaysToShow } from './constants';
 
 const dateTo = new Date();
 const formattedDateTo = `${dateTo.getFullYear()}-${dateTo.getMonth() + 1}-${dateTo.getDate()}`;
 
 const dateFrom = new Date();
-dateFrom.setDate(dateFrom.getDate() - 7);
+dateFrom.setDate(dateFrom.getDate() - newsDaysToShow);
 const formattedDateFrom = `${dateFrom.getFullYear()}-${dateFrom.getMonth() + 1}-${dateFrom.getDate()}`;
 /* https://nomoreparties.co/news/v2/top-headlines?country=us&apiKey=[ваш_ключ] */
 export const connectNewsApi = new NewsApi({
