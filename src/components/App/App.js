@@ -92,6 +92,21 @@ function App() {
     });
   }
 
+  function handleLoginClick() {
+    closeAllPopups();
+    setLoginPopupOpen(true);
+  }
+
+  function handleShowSavedPages() {
+    showMessage({
+      name: 'failure',
+      title: 'Необходимо авторизоваться',
+      content: (<span className="popup__offer popup__offer_left">
+        Для просмотра сохраненных статей необходимо <a className="popup__offer-link" href="#" onClick={handleLoginClick}>войти</a>
+      </span>),
+    });
+  }
+
   function handleLoginPopupSubmit({ email, password }) {
     connectMainApi.login({ email, password })
       .then((res) => {
@@ -161,11 +176,6 @@ function App() {
   function handleRegisterClick() {
     setLoginPopupOpen(false);
     setRegisterPopupOpen(true);
-  }
-
-  function handleLoginClick() {
-    closeAllPopups();
-    setLoginPopupOpen(true);
   }
 
   function onUnLoginClick() {
@@ -318,7 +328,7 @@ function App() {
           savedCards={savedCards}
           onSaveCard={handleSaveCard}
           onDeleteCard={handleDeleteCard}
-          showOffer={handleShowOffer}
+          showOffer={handleShowSavedPages}
           component={Main}
         />
 
